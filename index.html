@@ -833,6 +833,9 @@ details.card>summary{font:600 18px var(--body);cursor:pointer;list-style-positio
 .rl summary{cursor:pointer;padding-block:3px}.rl .verse{margin-top:4px;margin-bottom:6px}
 .tm.dep{display:block;margin-top:7px}.gdep label{padding-left:14px}
 .vr small{display:block;font-weight:400;font-size:13px;color:var(--mut)}
+.vr{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 28px}.vsay{all:unset;cursor:pointer;color:var(--acc);font-weight:600}.vx{all:unset;cursor:pointer;width:28px;height:28px;display:flex;align-items:center;justify-content:center;color:var(--mut);font-size:18px}
+.ttr{background:var(--soft);border-radius:10px;padding:10px 12px}.ttr small{display:block;color:var(--mut);font-size:14px;margin-top:4px}.tten{display:flex;align-items:center;gap:10px;justify-content:space-between}.tten b{font-size:17px}.tten svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#tti{width:100%;font:inherit;background:var(--soft);color:inherit;border:1px solid var(--line);border-radius:10px;padding:10px 12px;resize:vertical}
 </style>
 
 </head><body>
@@ -926,7 +929,7 @@ const DOCS=[
 ];
 const I18={
  tabs:{days:{ru:"Программа",en:"Programme"},map:{ru:"Карта",en:"Map"},hotels:{ru:"Отели",en:"Hotels"},info:{ru:"Инфо",en:"Info"}},
- docsH:{ru:"Документы",en:"Documents"},site:{ru:"Сайт",en:"Website"},voucher:{ru:"Ваучер",en:"Voucher"},meetPay:{ru:"Встреча группы — 12:30, 3 ноября",en:"Group meeting — 12:30, 3 November"},tips:{ru:"Чаевые гиду и водителю",en:"Tips for the guide and driver"},guide:{ru:"Для гида",en:"Guide"},gPw:{ru:"Пароль",en:"Password"},gIn:{ru:"Войти",en:"Sign in"},gBad:{ru:"Неверный пароль",en:"Wrong password"},gMsg:{ru:"Сообщение (русский)",en:"Message (Russian)"},gMsgE:{ru:"Сообщение (английский, необязательно)",en:"Message (English, optional)"},gDur:{ru:"Показывать",en:"Show for"},gSave:{ru:"Сохранить",en:"Save"},gSaved:{ru:"Сохранено",en:"Saved"},gErr:{ru:"Не удалось сохранить. Проверьте интернет",en:"Could not save. Check the internet"},inst:{ru:"Установить как приложение",en:"Install as an app"},instOk:{ru:"После этого всё работает без интернета.",en:"After that, everything works without internet."},instBtn:{ru:"Установить",en:"Install"},instCopy:{ru:"Скопировать ссылку",en:"Copy link"},instDone:{ru:"Скопировано",en:"Copied"},instDl:{ru:"Скачать файл (25 МБ)",en:"Download file (25 MB)"},instDlT:{ru:"Запасной вариант: скачайте файл и откройте его в Chrome.",en:"Backup option: download the file and open it in Chrome."},trT:{ru:"Для переводчика",en:"Translator"},trShow:{ru:"Показывать словарь в программе",en:"Show vocabulary in the programme"},trFind:{ru:"Поиск слова",en:"Find a word"},trVoc:{ru:"Словарь",en:"Vocabulary"},trGen:{ru:"Общий словарь",en:"General vocabulary"},dinner:{ru:"Ужин",en:"Dinner"},readT:{ru:"Прочитайте",en:"Read"},depT:{ru:"Отъезд",en:"Leaving"},gClr:{ru:"Удалить время",en:"Clear time"},gAct:{ru:"Активные сообщения",en:"Active messages"},gNew:{ru:"Новое сообщение",en:"New message"},gUntil:{ru:"до",en:"until"},gBold:{ru:"Выделить жирным",en:"Bold"},gUnder:{ru:"Подчеркнуть",en:"Underline"},gOut:{ru:"Завершить редактирование",en:"Finish editing"},gLeave:{ru:"Выезд после завтрака",en:"Departure after breakfast"},gTimes:{ru:"Время по программе",en:"Times in the programme"},leaveT:{ru:"Выезд из отеля",en:"Departure from the hotel"},hrs:{ru:"ч",en:"h"},contacts:{ru:"Контакты",en:"Contacts"},
+ docsH:{ru:"Документы",en:"Documents"},site:{ru:"Сайт",en:"Website"},voucher:{ru:"Ваучер",en:"Voucher"},meetPay:{ru:"Встреча группы — 12:30, 3 ноября",en:"Group meeting — 12:30, 3 November"},tips:{ru:"Чаевые гиду и водителю",en:"Tips for the guide and driver"},guide:{ru:"Для гида",en:"Guide"},gPw:{ru:"Пароль",en:"Password"},gIn:{ru:"Войти",en:"Sign in"},gBad:{ru:"Неверный пароль",en:"Wrong password"},gMsg:{ru:"Сообщение (русский)",en:"Message (Russian)"},gMsgE:{ru:"Сообщение (английский, необязательно)",en:"Message (English, optional)"},gDur:{ru:"Показывать",en:"Show for"},gSave:{ru:"Сохранить",en:"Save"},gSaved:{ru:"Сохранено",en:"Saved"},gErr:{ru:"Не удалось сохранить. Проверьте интернет",en:"Could not save. Check the internet"},inst:{ru:"Установить как приложение",en:"Install as an app"},instOk:{ru:"После этого всё работает без интернета.",en:"After that, everything works without internet."},instBtn:{ru:"Установить",en:"Install"},instCopy:{ru:"Скопировать ссылку",en:"Copy link"},instDone:{ru:"Скопировано",en:"Copied"},instDl:{ru:"Скачать файл (25 МБ)",en:"Download file (25 MB)"},instDlT:{ru:"Запасной вариант: скачайте файл и откройте его в Chrome.",en:"Backup option: download the file and open it in Chrome."},trT:{ru:"Для переводчика",en:"Translator"},trShow:{ru:"Показывать словарь в программе",en:"Show vocabulary in the programme"},trFind:{ru:"Поиск слова",en:"Find a word"},trVoc:{ru:"Словарь",en:"Vocabulary"},trGen:{ru:"Общий словарь",en:"General vocabulary"},dinner:{ru:"Ужин",en:"Dinner"},readT:{ru:"Прочитайте",en:"Read"},depT:{ru:"Отъезд",en:"Leaving"},ttT:{ru:"Переводчик: русский → английский",en:"Translator: Russian → English"},ttPh:{ru:"Введите текст по-русски",en:"Type Russian text"},ttListen:{ru:"Прослушать",en:"Listen"},ttNet:{ru:"Для перевода нужен интернет. Слова из словаря работают без него.",en:"Translation needs internet. Vocabulary words work without it."},ttErr:{ru:"Не удалось перевести. Попробуйте ещё раз.",en:"Translation failed. Please try again."},vHide:{ru:"Скрыть слово",en:"Hide word"},vShow:{ru:"Показать скрытые",en:"Show hidden"},gClr:{ru:"Удалить время",en:"Clear time"},gAct:{ru:"Активные сообщения",en:"Active messages"},gNew:{ru:"Новое сообщение",en:"New message"},gUntil:{ru:"до",en:"until"},gBold:{ru:"Выделить жирным",en:"Bold"},gUnder:{ru:"Подчеркнуть",en:"Underline"},gOut:{ru:"Завершить редактирование",en:"Finish editing"},gLeave:{ru:"Выезд после завтрака",en:"Departure after breakfast"},gTimes:{ru:"Время по программе",en:"Times in the programme"},leaveT:{ru:"Выезд из отеля",en:"Departure from the hotel"},hrs:{ru:"ч",en:"h"},contacts:{ru:"Контакты",en:"Contacts"},
  hotelInfo:{ru:"Об отеле",en:"Hotel details"},
  brand:{ru:"ТУР В ИЗРАИЛЬ 2026 · 3–10 НОЯБРЯ",en:"ISRAEL TOUR 2026 · 3–10 NOV"},
  
@@ -956,14 +959,38 @@ const INST={ios:{t:"iPhone / iPad",ru:["Откройте эту страницу
 
 const W=s=>s.trim().split("\n").map(l=>l.split("|").map(x=>x.trim()));
 const GL={
-jaffa:W(`Тавифа (Серна)|Tabitha (Dorcas)|TAB-ih-thuh, DOR-kus
+jaffa:W(`Джехути (полководец Тутмоса)|Djehuty|jeh-HOO-tee
+Зоровавель|Zerubbabel|zuh-RUB-uh-bel
+ворота Рамсеса|Ramesses Gate|RAM-uh-seez
+Тель-Яфо|Tel Yafo|tel YAH-foh
+Еней|Aeneas|ih-NEE-us
+Тавифа (Серна)|Tabitha (Dorcas)|TAB-ih-thuh, DOR-kus
 Фарсис|Tarshish|TAR-shish
 Иоппия|Joppa|JOP-uh
+колено Даново|the tribe of Dan|DAN
+филистимляне|Philistines|FIL-ih-steenz
+Хирам, царь Тирский|Hiram, king of Tyre|HIE-rum, TIRE
+скала Андромеды|Andromeda's Rock|an-DROM-uh-duhz
+Лидда|Lydda|LID-uh
 кожевник|tanner|TAN-er
 ливанские кедры|cedars of Lebanon|SEE-derz, LEB-uh-nun
 Часовая башня|Clock Tower|KLOK TOW-er`),
-net:W(`Саронская долина|Plain of Sharon|SHAIR-un`),
-caes:W(`надпись «Тиберией» на камне Пилата|Tiberieum|tie-buh-REE-um
+net:W(`нарцисс Саронский|the rose of Sharon|SHAIR-un
+Саронская долина|Plain of Sharon|SHAIR-un
+колено Манассиино|the tribe of Manasseh|muh-NAS-uh`),
+caes:W(`пуццолана (подводный бетон)|pozzolana (hydraulic concrete)|pot-soh-LAH-nuh
+вомиторий (выход из театра)|vomitorium|vom-ih-TOR-ee-um
+кавея (зрительный зал)|cavea|KAY-vee-uh
+митреум|Mithraeum|mith-REE-um
+кессон|caisson|KAY-son
+Стратонова башня|Straton's Tower|STRAT-unz
+Клавдий Лисий|Claudius Lysias|KLAW-dee-us LIS-ee-us
+Тертулл|Tertullus|ter-TUL-us
+Вереника|Bernice|ber-NEE-see
+Друзилла|Drusilla|droo-SIL-uh
+Ориген|Origen|OR-ih-jen
+Евсевий Кесарийский|Eusebius of Caesarea|yoo-SEE-bee-us
+надпись «Тиберией» на камне Пилата|Tiberieum|tie-buh-REE-um
 камень Пилата|Pilate Stone|PIE-lut
 Себастос (гавань Ирода)|Sebastos (Herod's harbor)|seh-BAS-tos
 Кесария Приморская|Caesarea Maritima|sess-uh-REE-uh mar-ih-TEE-muh
@@ -971,6 +998,14 @@ caes:W(`надпись «Тиберией» на камне Пилата|Tiberie
 кардо максимус|Cardo Maximus|KAR-doh MAK-sih-mus
 мысовой дворец|Promontory Palace|PROM-un-tor-ee
 высокий акведук|high-level aqueduct|AK-wuh-dukt
+гласис (скат у крепостной стены)|glacis|GLAY-sis
+Агав (пророк)|Agabus|AG-uh-bus
+Филипп благовестник|Philip the evangelist|ih-VAN-juh-list
+Ирод Агриппа I|Herod Agrippa I|HAIR-ud uh-GRIP-uh
+кесарь Август|Caesar Augustus|SEE-zer aw-GUS-tus
+Веспасиан|Vespasian|ves-PAY-zhun
+Людовик IX|Louis IX|LOO-ee
+Итальянский полк|Italian Regiment|REJ-ih-munt
 ипподром|hippodrome|HIP-uh-drohm
 сотник|centurion|sen-TYOOR-ee-un
 Корнилий|Cornelius|kor-NEEL-yus
@@ -978,7 +1013,13 @@ caes:W(`надпись «Тиберией» на камне Пилата|Tiberie
 Фест|Festus|FES-tus
 царь Агриппа|King Agrippa|uh-GRIP-uh
 «требую суда кесарева»|"I appeal to Caesar"|uh-PEEL, SEE-zer`),
-muh:W(`Расаиль аль-Хикма (Послания мудрости)|Rasa'il al-Hikma (Epistles of Wisdom)|rah-SAH-il al HIK-muh
+muh:W(`Ефваал, царь Сидонский|Ethbaal, king of the Sidonians|ETH-bay-ul, sie-DOH-nee-unz
+Ахиил Вефилянин|Hiel the Bethelite|HIE-el, BETH-uh-lite
+Мелькарт|Melqart|MEL-kart
+Хорафа (поток)|the Brook Cherith|KEER-ith
+Сарепта Сидонская|Zarephath|ZAIR-uh-fath
+Амврий|Omri|OM-ree
+Расаиль аль-Хикма (Послания мудрости)|Rasa'il al-Hikma (Epistles of Wisdom)|rah-SAH-il al HIK-muh
 аль-Хаким би-Амр Аллах|al-Hakim bi-Amr Allah|al HAH-kim bee AHM-ruh ah-LAH
 аль-Муваххидун (самоназвание друзов)|al-Muwahhidun|al moo-wah-hih-DOON
 Фесвитянин|the Tishbite|TISH-bite
@@ -991,6 +1032,11 @@ muh:W(`Расаиль аль-Хикма (Послания мудрости)|Rasa
 Фатимиды|Fatimids|FAT-ih-midz
 поток Киссон|the Brook Kishon|KIE-shon
 пророки дубравные|the prophets of Asherah|uh-SHEER-uh
+колено Асирово|the tribe of Asher|ASH-er
+финикийцы|Phoenicians|fih-NEE-shunz
+Елисей|Elisha|ih-LIE-shuh
+Аса (царь Иудеи)|Asa|AY-suh
+Самария|Samaria|suh-MAIR-ee-uh
 Мухрака|Muhraka|mookh-RAH-kah
 Авдий (управитель Ахава)|Obadiah|oh-buh-DIE-uh
 Галаад|Gilead|GIL-ee-ad
@@ -1004,7 +1050,17 @@ muh:W(`Расаиль аль-Хикма (Послания мудрости)|Rasa
 Ваал|Baal|BAY-ul
 Илия|Elijah|ih-LIE-juh
 всесожжение|burnt sacrifice|SAK-rih-fice`),
-meg:W(`Телль эль-Мутеселлим|Tell el-Mutesellim|tel el moo-teh-SEL-im
+meg:W(`Гададриммон|Hadadrimmon|hay-dad-RIM-on
+протоэолическая капитель|proto-Aeolic capital|pro-toh ee-OL-ik
+стратиграфия|stratigraphy|struh-TIG-ruh-fee
+тёсаная кладка|ashlar masonry|ASH-ler MAY-sun-ree
+Готлиб Шумахер|Gottlieb Schumacher|GOT-leeb SHOO-mah-ker
+Хевер Кенеянин|Heber the Kenite|HEE-ber, KEE-nite
+Иеровоам II|Jeroboam II|jer-uh-BOH-um
+Охозия|Ahaziah|ay-huh-ZIE-uh
+Иавин|Jabin|JAY-bin
+печать Шема|the seal of Shema|sheh-MAH
+Телль эль-Мутеселлим|Tell el-Mutesellim|tel el moo-teh-SEL-im
 Тиглатпаласар III|Tiglath-Pileser III|TIG-lath pie-LEE-zer
 Салманасар III|Shalmaneser III|shal-muh-NEE-zer
 Тутмос III|Thutmose III|thoot-MOH-suh
@@ -1014,6 +1070,15 @@ meg:W(`Телль эль-Мутеселлим|Tell el-Mutesellim|tel el moo-teh-
 шестикамерные ворота|six-chambered gate|CHAYM-berd
 Хар-Мегиддо (Армагеддон)|Har-Megiddo|har meh-GID-oh
 фараон Нехао|Pharaoh Necho|FAIR-oh NEE-koh
+колено Иссахарово|the tribe of Issachar|ISS-uh-kar
+колено Манассиино|the tribe of Manasseh|muh-NAS-uh
+Иаиль|Jael|JAY-ul
+Асор|Hazor|HAY-zor
+Газер|Gezer|GEE-zer
+Бефсан|Beth Shean|beth shee-AHN
+Сонам|Shunem|SHOO-nem
+Алленби|Allenby|AL-en-bee
+слой (археологический)|stratum|STRAH-tum
 Сисара|Sisera|SIS-er-uh
 Морской путь|Via Maris|VEE-uh MAR-iss
 ханаанеи|Canaanites|KAY-nuh-nites
@@ -1023,53 +1088,129 @@ meg:W(`Телль эль-Мутеселлим|Tell el-Mutesellim|tel el moo-teh-
 царь Иосия|King Josiah|joh-SIGH-uh
 зернохранилище|grain silo|SIE-loh
 Мегиддо|Megiddo|meh-GID-oh`),
-nv:W(`свиток Исаии|the scroll of Isaiah|eye-ZAY-uh
+nv:W(`тектон (плотник, строитель)|tekton|TEK-ton
+хазан (служитель синагоги)|hazzan|hah-ZAHN
+Сепфорис (Циппори)|Sepphoris (Zippori)|SEF-uh-ris, tsih-POH-ree
+бима|bimah|BEE-muh
+Нафанаил|Nathanael|nuh-THAN-ay-ul
+свиток Исаии|the scroll of Isaiah|eye-ZAY-uh
 гумно|threshing floor|THRESH-ing
 каменоломня|stone quarry|KWOR-ee
 миква|mikveh|MIK-vuh
+колено Завулоново|the tribe of Zebulun|ZEB-yoo-lun
+Кана Галилейская|Cana of Galilee|KAY-nuh, GAL-ih-lee
+Наин|Nain|NAY-in
+гора Фавор|Mount Tabor|TAY-ber
+гора низвержения|Mount of Precipice|PRES-ih-pis
+цистерна|cistern|SIS-tern
+архангел Гавриил|the archangel Gabriel|ARK-ayn-jul GAY-bree-ul
 сторожевая башня|watchtower|WOCH-tow-er
 ткацкий станок|loom|LOOM
 жёрнов|millstone|MIL-stohn
 террасы|terraces|TAIR-uh-siz`),
-cap:W(`Кфар-Нахум|Kfar Nahum|kfar nah-HOOM
+cap:W(`«талифа куми»|"talitha cumi"|TAL-ih-thuh KOO-mee
+домус-экклесия (дом-церковь)|domus ecclesia|DOH-mus ih-KLEE-zee-uh
+Вирджилио Корбо|Virgilio Corbo|veer-JEE-lee-oh KOR-boh
+Эгерия (паломница)|Egeria|ih-JEER-ee-uh
+Зеведей|Zebedee|ZEB-uh-dee
+Табга|Tabgha|TAHB-gah
+Курси|Kursi|KOOR-see
+Десятиградие|the Decapolis|dih-KAP-uh-lis
+земля Гадаринская|country of the Gadarenes|GAD-uh-reenz
+Ирод Антипа|Herod Antipas|HAIR-ud AN-tih-pus
+Кфар-Нахум|Kfar Nahum|kfar nah-HOOM
 инсула|insula|IN-suh-luh
 Хоразин|Chorazin|koh-RAY-zin
 Иаир|Jairus|JY-rus
 Вифсаида|Bethsaida|beth-SAY-uh-duh
 Капернаум|Capernaum|kuh-PUR-nay-um
+колено Неффалимово|the tribe of Naphtali|NAF-tuh-lie
+колено Завулоново|the tribe of Zebulun|ZEB-yoo-lun
+мильный камень|Roman milestone|MILE-stohn
+галилейская лодка|the Galilee Boat|GAL-ih-lee
+рыба святого Петра (тиляпия)|St. Peter's fish (tilapia)|tih-LAH-pee-uh
+Гинносар|Ginosar|gih-noh-SAR
+Андрей|Andrew|AN-droo
+Левий|Levi|LEE-vie
 Геннисаретское озеро|Lake of Gennesaret|geh-NESS-uh-ret
 Гора Блаженств|Mount of Beatitudes|bee-AT-ih-toodz
 расслабленный|paralytic|pair-uh-LIT-ik
 мытарь|tax collector|kuh-LEK-ter
 базальт|basalt|buh-SALT`),
-mag:W(`Тарихея|Taricheae|tuh-RIK-ee-ee
+mag:W(`Далмануфа|Dalmanutha|dal-muh-NOO-thuh
+Магадан|Magadan|MAG-uh-dan
+опус сектиле|opus sectile|OH-pus SEK-tih-lay
+розетка (рельеф)|rosette|roh-ZET
+Дина Авшалом-Горни|Dina Avshalom-Gorni|DEE-nah av-shah-LOHM GOR-nee
+Иоанна|Joanna|joh-AN-uh
+Сусанна|Susanna|soo-ZAN-uh
+Тарихея|Taricheae|tuh-RIK-ee-ee
 Мигдаль-Нуная|Migdal Nunaya|mig-DAHL noo-NAH-yah
 Хуза|Chuza|KOO-zuh
 бейт-мидраш|beit midrash|bayt mid-RAHSH
 гора Арбель|Mount Arbel|ar-BEL
 Дук ин Альтум|Duc in Altum|dook in AHL-toom
+колено Неффалимово|the tribe of Naphtali|NAF-tuh-lie
+Ирод Антипа|Herod Antipas|HAIR-ud AN-tih-pus
+морская битва 67 года|the naval battle of AD 67|NAY-vul
+Тивериада|Tiberias|tie-BEER-ee-us
 миквот (мн. ч.)|mikva'ot|mik-VOHT
 засолка рыбы|fish salting|SAWL-ting
 Магдала|Magdala|MAG-duh-luh
 менора|menorah|muh-NOR-uh
 служили Ему имением|provided for Him from their substance|SUB-stans`),
-sde:W(`Набатеи|Nabataeans|nab-uh-TEE-unz
+sde:W(`Кадес-Варни|Kadesh Barnea|KAY-desh bar-NEE-uh
+Мерива|Meribah|MAIR-ih-buh
+амаликитяне|Amalekites|uh-MAL-uh-kites
+идумеяне (эдомитяне)|Edomites|EE-duh-mites
+махтеш (эрозионный кратер)|makhtesh|mahk-TESH
+Махтеш-Рамон|Makhtesh Ramon|mahk-TESH rah-MOHN
+Обода (набатейский царь)|Obodas|oh-BOH-dus
+лёсс|loess|LOH-es
+Акраббим (Скорпионий подъём)|Akrabbim (Scorpion Pass)|uh-KRAB-im
+Набатеи|Nabataeans|nab-uh-TEE-unz
 Эйн-Авдат|Ein Avdat|ayn av-DAHT
 Сде-Бокер|Sde Boker|sday BOH-ker
 Кадес|Kadesh|KAY-desh
 пустыня Цин|Wilderness of Zin|ZIN
+колено Симеоново|the tribe of Simeon|SIM-ee-un
+бедуины|Bedouin|BED-oo-in
+Вирсавия (город)|Beersheba|beer-SHEE-buh
+Мариам|Miriam|MEER-ee-um
+Агарь|Hagar|HAY-gar
+Петра|Petra|PET-ruh
 Дорога благовоний|Incense Route|IN-sens
 киббуц|kibbutz|kih-BOOTS
 Негев|Negev|NEH-gev
 Паула Бен-Гурион|Paula Ben-Gurion|ben GOOR-ee-un`),
-hike:W(`горный козёл|Nubian ibex|NOO-bee-un IE-beks
+hike:W(`даман (библейская «горная мышь»)|rock hyrax|HIE-raks
+белоголовый сип|griffon vulture|GRIF-un VUL-cher
+горный козёл|Nubian ibex|NOO-bee-un IE-beks
 вади (сухое русло)|wadi|WAH-dee`),
-hostel:W(`Авдала|Havdalah|hav-duh-LAH
+hostel:W(`Вади-Аругот|Wadi Arugot|WAH-dee ah-roo-GOHT
+Кумран|Qumran|koom-RAHN
+ессеи|Essenes|EH-seenz
+Сигор|Zoar|ZOH-er
+Арава|the Arabah|AIR-uh-buh
+асфальт (битум)|bitumen|bih-TOO-men
+Авдала|Havdalah|hav-duh-LAH
 кидуш|Kiddush|KID-ush
 хала|challah|HAH-luh
+моавитяне|Moabites|MOH-uh-bites
+Лот|Lot|LOT
+свитки Мёртвого моря|the Dead Sea Scrolls|skrohlz
+Соленое море|the Salt Sea|SAWLT see
+гора Содом|Mount Sodom|SOD-um
 Эйн-Геди|En Gedi|en GED-ee
 Содом и Гоморра|Sodom and Gomorrah|SOD-um, guh-MOR-uh`),
-mas:W(`гипокауст|hypocaust|HIE-poh-kawst
+mas:W(`Игаэль Ядин|Yigael Yadin|yig-ah-EL yah-DEEN
+Мариамна|Mariamne|mair-ee-AM-nee
+идумеи|Idumeans|id-yoo-MEE-unz
+Хасмонеи|Hasmoneans|haz-muh-NEE-unz
+Ионафан Маккавей|Jonathan Maccabee|MAK-uh-bee
+баллиста|ballista|buh-LIS-tuh
+свиток Иезекииля (видение костей)|the Ezekiel scroll|ih-ZEE-kee-ul
+гипокауст|hypocaust|HIE-poh-kawst
 аподитерий (раздевальня)|apodyterium|ap-oh-dih-TEER-ee-um
 тепидарий (тёплая комната)|tepidarium|tep-ih-DAIR-ee-um
 кальдарий (горячая комната)|caldarium|kal-DAIR-ee-um
@@ -1079,6 +1220,11 @@ mas:W(`гипокауст|hypocaust|HIE-poh-kawst
 опус сектиле (мозаика)|opus sectile|OH-pus SEK-tih-lay
 Десятый легион Фретенсис|Legio X Fretensis|LEE-jee-oh fruh-TEN-sis
 казематная стена|casemate wall|KAYS-mayt
+осадная башня|siege tower|SEEJ TOW-er
+Эдвард Робинсон|Edward Robinson|ROB-in-sun
+Нерон|Nero|NEER-oh
+Веспасиан|Vespasian|ves-PAY-zhun
+священническая десятина|priestly tithe|TIETH
 сикарии|Sicarii|sih-KAIR-ee-eye
 остраконы (жребии)|ostraca (the lots)|OS-truh-kuh
 гениза|genizah|geh-NEE-zuh
@@ -1088,25 +1234,56 @@ mas:W(`гипокауст|hypocaust|HIE-poh-kawst
 зелоты|Zealots|ZEL-uts
 осадная насыпь|siege ramp|SEEJ ramp
 Змеиная тропа|Snake Path|snayk path`),
-mol:W(`Виффагия|Bethphage|BETH-fuh-jee
+mol:W(`Бней-Хезир|Bene Hezir|BEH-nay heh-ZEER
+Иосафатова долина|Valley of Jehoshaphat|jeh-HOSH-uh-fat
+гора Соблазна|Mount of Offense|uh-FENS
+Елеона (базилика)|Eleona Basilica|el-ee-OH-nuh
+Отче наш (церковь)|Pater Noster Church|PAH-ter NOS-ter
+капелла Вознесения|Chapel of the Ascension|uh-SEN-shun
+Виффагия|Bethphage|BETH-fuh-jee
 Елеон|Olivet|OL-ih-vet
 могила Авессалома|Tomb of Absalom|AB-suh-lum
 Кедронская долина|Kidron Valley|KID-run
+колено Вениаминово|the tribe of Benjamin|BEN-juh-min
+Симон прокажённый|Simon the leper|LEP-er
+Марфа|Martha|MAR-thuh
+гробница Захарии|Tomb of Zechariah|zek-uh-RIE-uh
 Вифания|Bethany|BETH-uh-nee
 «Осанна!»|"Hosanna!"|hoh-ZAN-uh
 Вознесение|the Ascension|uh-SEN-shun`),
-dom:W(`Доминус Флевит|Dominus Flevit|DOM-ih-nus FLAY-vit
+dom:W(`кохим (погребальные ниши)|kokhim|koh-KHEEM
+Беллармино Багатти|Bellarmino Bagatti|bel-ar-MEE-noh bah-GAH-tee
+некрополь|necropolis|neh-KROP-uh-lis
+Доминус Флевит|Dominus Flevit|DOM-ih-nus FLAY-vit
 Антонио Барлуцци|Antonio Barluzzi|bar-LOOT-see
+византийская мозаика|Byzantine mosaic|BIZ-un-teen moh-ZAY-ik
 оссуарий|ossuary|OSH-oo-air-ee
 францисканцы|Franciscans|fran-SIS-kunz`),
-get:W(`Гат-Шеманим (масличный пресс)|Gat Shemanim|gat sheh-mah-NEEM
+get:W(`Каиафа|Caiaphas|KIE-uh-fus
+Анна (первосвященник)|Annas|AN-us
+спира (римская когорта)|cohort|KOH-hort
+«Авва, Отче»|"Abba, Father"|AH-buh
+Гат-Шеманим (масличный пресс)|Gat Shemanim|gat sheh-mah-NEEM
 Малх|Malchus|MAL-kus
 Гефсимания|Gethsemane|geth-SEM-uh-nee
 Искариот|Iscariot|iss-KAIR-ee-ut
+гробница Богородицы|Tomb of Mary|TOOM
+поток Кедрон|the Brook Kidron|KID-run
+Иаков и Иоанн|James and John|jaymz
 Базилика Агонии|Basilica of the Agony|buh-SIL-ih-kuh, AG-uh-nee
 Кедрон|Kidron|KID-run
 пот как капли крови|sweat like great drops of blood|swet`),
-tm:W(`Эвен ха-Штия|Even ha-Shetiya|EH-ven hah-sheh-TEE-yah
+tm:W(`Навуходоносор|Nebuchadnezzar|neb-uh-kud-NEZ-er
+Антиох Епифан|Antiochus Epiphanes|an-TIE-uh-kus eh-PIF-uh-neez
+Элия Капитолина|Aelia Capitolina|EE-lee-uh kap-ih-toh-LIE-nuh
+Иахин и Воаз|Jachin and Boaz|JAY-kin, BOH-az
+Абд аль-Малик|Abd al-Malik|abd al MAH-lik
+ворота Барклая|Barclay's Gate|BAR-kleez
+Мишна|the Mishnah|MISH-nuh
+Иуда Маккавей|Judas Maccabeus|mak-uh-BEE-us
+тамплиеры|Knights Templar|TEM-pler
+Лин Ритмейер|Leen Ritmeyer|leen RIT-my-er
+Эвен ха-Штия|Even ha-Shetiya|EH-ven hah-sheh-TEE-yah
 Тиропеон|Tyropoeon Valley|tie-ROH-pee-on
 Харам аш-Шариф|Haram al-Sharif|hah-RAHM ash-shah-REEF
 Шхина|Shekhinah|sheh-KIE-nuh
@@ -1115,6 +1292,13 @@ tm:W(`Эвен ха-Штия|Even ha-Shetiya|EH-ven hah-sheh-TEE-yah
 сорег (ограда Храма)|Soreg|SOH-reg
 гумно Орны|threshing floor of Ornan|OR-nan
 Аравна|Araunah|uh-RAW-nuh
+двор язычников|Court of the Gentiles|JEN-tiles
+Красные ворота|the Beautiful Gate|BYOO-tih-ful
+Талмуд|the Talmud|TAHL-mood
+халиф Омар|Caliph Omar|KAY-lif OH-mar
+император Адриан|Emperor Hadrian|HAY-dree-un
+Ирод Великий|Herod the Great|HAIR-ud
+Ездра и Неемия|Ezra and Nehemiah|nee-uh-MIE-uh
 ворота Хульды|Huldah Gates|HUL-duh
 арка Робинсона|Robinson's Arch|ROB-in-sunz
 арка Вильсона|Wilson's Arch|WIL-sunz
@@ -1124,58 +1308,139 @@ tm:W(`Эвен ха-Штия|Even ha-Shetiya|EH-ven hah-sheh-TEE-yah
 мечеть Аль-Акса|Al-Aqsa Mosque|al AHK-suh
 притвор Соломонов|Solomon's Porch|SOL-uh-munz
 завеса|veil|VAYL`),
-foz:W(`Уильям Хехлер|William Hechler|HEKH-ler
+foz:W(`Тиунэ Сугихара|Chiune Sugihara|chee-OO-neh soo-gee-HAH-rah
+Рауль Валленберг|Raoul Wallenberg|rah-OOL WOL-en-burg
+лорд Шафтсбери|Lord Shaftesbury|SHAFTS-buh-ree
+алия (репатриация)|aliyah|ah-lee-AH
+Уильям Хехлер|William Hechler|HEKH-ler
 Орд Вингейт|Orde Wingate|ord WING-gayt
 Декларация Бальфура|Balfour Declaration|BAL-fur
+Николас Уинтон|Nicholas Winton|WIN-tun
+Майк Эванс (основатель)|Mike Evans|EV-unz
+Гарри Трумэн|Harry Truman|TROO-mun
 Корри тен Бом|Corrie ten Boom|KOR-ee ten BOHM
 Праведники народов мира|Righteous Among the Nations|RIE-chus
 Оскар Шиндлер|Oskar Schindler|SHIND-ler`),
-her:W(`Зеэв Жаботинский|Ze'ev Jabotinsky|ZEH-ev zhab-oh-TIN-skee
+her:W(`«Der Judenstaat» («Еврейское государство»)|Der Judenstaat|dair YOO-den-shtaht
+«Альтнойланд»|Altneuland|ALT-noy-lahnt
+Хаим Герцог|Chaim Herzog|HIE-im HER-tsog
+Йони Нетаньяху|Yoni Netanyahu|YOH-nee net-un-YAH-hoo
+Леви Эшколь|Levi Eshkol|LEH-vee ESH-kol
+Энтеббе|Entebbe|en-TEB-ee
+Зеэв Жаботинский|Ze'ev Jabotinsky|ZEH-ev zhab-oh-TIN-skee
 Ханна Сенеш|Hannah Szenes|SEN-esh
 Теодор Герцль|Theodor Herzl|HERT-sul
+Первый сионистский конгресс в Базеле|First Zionist Congress in Basel|ZIE-uh-nist, BAH-zul
+Ицхак Шамир|Yitzhak Shamir|shah-MEER
+кнессет|the Knesset|KNES-et
 Ицхак Рабин|Yitzhak Rabin|yits-HAHK rah-BEEN
 Шимон Перес|Shimon Peres|shee-MOHN PEH-res
 Голда Меир|Golda Meir|GOL-duh my-EER`),
-cod:W(`буллы (глиняные печати)|bullae|BUL-ee
+cod:W(`Сеннахирим|Sennacherib|seh-NAK-er-ib
+Рабсак|the Rabshakeh|rab-SHAH-keh
+Миллон|the Millo|MIL-oh
+Севна|Shebna|SHEB-nuh
+Годолия, сын Пашхура|Gedaliah son of Pashhur|ged-uh-LIE-uh, PASH-er
+Йигаль Шилох|Yigal Shiloh|yig-AHL shee-LOH
+Кэтлин Кеньон|Kathleen Kenyon|KEN-yun
+Рони Райх|Ronny Reich|RON-ee RIKE
+Эли Шукрон|Eli Shukron|EH-lee shoo-KROHN
+Силуан|Silwan|sil-WAHN
+буллы (глиняные печати)|bullae|BUL-ee
 иевусеи|Jebusites|JEB-yoo-sites
 Иегухал (печать)|Jehucal|jeh-HOO-kal
 Эйлат Мазар|Eilat Mazar|ay-LAHT mah-ZAR
 Ступенчатая каменная конструкция|Stepped Stone Structure|stepped stohn STRUK-cher
 Большая каменная постройка|Large Stone Structure|larj stohn STRUK-cher
 Весенняя башня|Spring Tower|spring TOW-er
+Садок|Zadok|ZAY-dok
+Иоав|Joab|JOH-ab
+Урия Хеттеянин|Uriah the Hittite|yoo-RIE-uh, HIT-ite
+Ахиил (дом)|House of Ahiel|uh-HIE-el
+хеттеи|Hittites|HIT-ites
+колено Иудино|the tribe of Judah|JOO-duh
 Офел|Ophel|OH-fel
 Гихон|Gihon|GEE-hon
 шахта Уоррена|Warren's Shaft|WOR-enz
 Силоамская надпись|Siloam Inscription|sy-LOH-um in-SKRIP-shun
 царь Езекия|King Hezekiah|hez-uh-KIE-uh
 Вирсавия|Bathsheba|bath-SHEE-buh`),
-pil:W(`надпись Феодота|Theodotus Inscription|thee-OD-uh-tus
+pil:W(`Шалош Регалим (три праздника)|Shalosh Regalim|shah-LOHSH reh-gah-LEEM
+Блисс и Дики|Bliss and Dickie|BLIS, DIK-ee
+Суккот|Sukkot|soo-KOHT
+Шавуот|Shavuot|shah-voo-OHT
+Песах|Pesach|PEH-sahkh
+надпись Феодота|Theodotus Inscription|thee-OD-uh-tus
 Песни восхождения|Songs of Ascents|uh-SENTS
 ступенчатая улица|Stepped Street|STEPT street
+водоливание|water libation|lie-BAY-shun
+долина Тиропеон|Tyropoeon Valley|tie-ROH-pee-on
+монеты Пилата|coins of Pilate|PIE-lut
 праздник Кущей|Feast of Tabernacles|TAB-er-nak-ulz
 Пятидесятница|Pentecost|PEN-tih-kost
 купальня Силоам|Pool of Siloam|sy-LOH-um`),
-gt:W(`Аримафея|Arimathea|air-ih-muh-THEE-uh
+gt:W(`Отто Тениус|Otto Thenius|TAY-nee-us
+Конрад Шик|Conrad Schick|SHIK
+Синедрион|the Sanhedrin|san-HEE-drin
+аркосолий|arcosolium|ar-kuh-SOH-lee-um
+Габриэль Баркай|Gabriel Barkay|bar-KIE
+Саломия|Salome|suh-LOH-mee
+Аримафея|Arimathea|air-ih-muh-THEE-uh
 гроб (в Евангелии)|the sepulchre|SEP-ul-ker
 Никодим|Nicodemus|nik-uh-DEE-mus
 Лобное место|Place of a Skull|skul
+Холм Черепа|Skull Hill|SKUL hil
+грот Иеремии|Jeremiah's Grotto|jer-uh-MIE-uhz GROT-oh
+гроб Господень|the Holy Sepulchre|SEP-ul-ker
+императрица Елена|Empress Helena|HEL-uh-nuh
+пещера Цидкиягу|Zedekiah's Cave|zed-uh-KIE-uh
 цистерна|cistern|SIS-tern
 Голгофа|Golgotha|GOL-guh-thuh
 Кальвария|Calvary|KAL-vuh-ree
 Дамасские ворота|Damascus Gate|duh-MAS-kus`),
-yv:W(`айнзацгруппы|Einsatzgruppen|EYE-n-zahts-groo-pen
+yv:W(`Мордехай Анелевич|Mordechai Anielewicz|MOR-deh-khie ah-nyeh-LEH-vich
+зондеркоманда|Sonderkommando|ZON-der-koh-MAHN-doh
+Адольф Эйхман|Adolf Eichmann|AH-dolf IKE-mun
+Рейнхард Гейдрих|Reinhard Heydrich|RINE-hart HIE-drikh
+юденрат|Judenrat|YOO-den-raht
+Нюрнбергские законы|Nuremberg Laws|NYOOR-um-burg
+Майданек|Majdanek|my-DAH-nek
+Собибор|Sobibor|SOH-bih-bor
+Треблинка|Treblinka|treh-BLING-kuh
+Белжец|Belzec|BEL-zhets
+айнзацгруппы|Einsatzgruppen|EYE-n-zahts-groo-pen
 Хрустальная ночь|Kristallnacht|kris-TAHL-nahkt
 Ванзейская конференция|Wannsee Conference|VAHN-zay
 Януш Корчак|Janusz Korczak|YAH-noosh KOR-chahk
 Освенцим|Auschwitz|OWSH-vits
+Бабий Яр|Babi Yar|BAH-bee yar
+кадиш|Kaddish|KAH-dish
+Циклон Б|Zyklon B|ZIE-klon BEE
+Варшавское гетто|Warsaw Ghetto|WOR-saw GET-oh
+партизаны|partisans|PAR-tih-zunz
 Шоа|the Shoah|SHOH-uh
 Моше Сафди|Moshe Safdie|moh-SHEH SAHF-dee
 Яд ва-Шем|Yad Vashem|yahd vah-SHEM
 призма (форма музея)|prism|PRIZ-um
 гетто|ghetto|GET-oh`),
-oc:W(`Сулейман Великолепный|Suleiman the Magnificent|soo-lay-MAHN
+oc:W(`Литостротон|the Lithostrotos|lih-THOS-truh-tos
+Гаввафа|Gabbatha|GAB-uh-thuh
+Вифезда|Bethesda|buh-THEZ-duh
+Мадабская карта|the Madaba Map|MAH-duh-buh
+Экче Хомо|Ecce Homo|EK-chay HOH-moh
+претория|the Praetorium|pree-TOR-ee-um
+Мористан|Muristan|moo-ris-TAHN
+ашкеназы|Ashkenazim|ash-kuh-NAH-zim
+сефарды|Sephardim|seh-FAR-dim
+копты|Copts|KOPTS
+Сулейман Великолепный|Suleiman the Magnificent|soo-lay-MAHN
 синагога Хурва|Hurva Synagogue|HOOR-vuh
 Скорбный путь|Via Dolorosa|VEE-uh doh-loh-ROH-suh
+Сионская горница|the Cenacle (Upper Room)|SEN-uh-kul
+Широкая стена|the Broad Wall|BRAWD wawl
+Сожжённый дом|the Burnt House|BURNT
+башня Фазаэля|Phasael Tower|FAY-zuh-el
+Львиные ворота|Lions' Gate|LIE-unz
 рынок|souk|SOOK
 Навозные ворота|Dung Gate|DUNG
 Кардо|the Cardo|KAR-doh`)};
@@ -1187,6 +1452,36 @@ const GLG=[{t:{ru:"Библия и вера",en:"Bible and faith"},w:W(`книж
 благодать|grace|GRAYS
 завет|covenant|KUV-uh-nunt
 Мессия|Messiah|muh-SIE-uh`)},
+{t:{ru:"Колена Израилевы и народы",en:"Tribes of Israel and peoples"},w:W(`Неффалим|Naphtali|NAF-tuh-lie
+Иссахар|Issachar|ISS-uh-kar
+Завулон|Zebulun|ZEB-yoo-lun
+Манассия|Manasseh|muh-NAS-uh
+Ефрем|Ephraim|EE-free-um
+Рувим|Reuben|ROO-ben
+Асир|Asher|ASH-er
+Гад|Gad|GAD
+Дан|Dan|DAN
+Вениамин|Benjamin|BEN-juh-min
+Симеон|Simeon|SIM-ee-un
+Левий|Levi|LEE-vie
+Иуда|Judah|JOO-duh
+амаликитяне|Amalekites|uh-MAL-uh-kites
+иевусеи|Jebusites|JEB-yoo-sites
+аморреи|Amorites|AM-uh-rites
+ханаанеи|Canaanites|KAY-nuh-nites
+финикийцы|Phoenicians|fih-NEE-shunz
+филистимляне|Philistines|FIL-ih-steenz
+самаряне|Samaritans|suh-MAIR-ih-tunz
+идумеи|Idumeans|id-yoo-MEE-unz`)},
+{t:{ru:"Археология",en:"Archaeology"},w:W(`стратиграфия|stratigraphy|struh-TIG-ruh-fee
+остракон|ostracon|OS-truh-kon
+тёсаный камень|ashlar|ASH-ler
+булла|bulla|BUL-uh
+оссуарий|ossuary|OSH-oo-air-ee
+железный век|Iron Age|EYE-ern ayj
+бронзовый век|Bronze Age|BRONZ ayj
+тель|tel|TEL
+слой|stratum|STRAH-tum`)},
 {t:{ru:"История",en:"History"},w:W(`Вавилонский плен|the Babylonian exile|bab-uh-LOH-nee-un EG-zile
 Хасмонеи|Hasmoneans|haz-muh-NEE-unz
 прокуратор|procurator|PROK-yoo-ray-ter
@@ -1230,11 +1525,20 @@ function go(k){tab=k;if(k==="hotels"||k==="info"){renderHotels();renderInfo()}do
 function verseH(v){return `<div class="verse"><div class="r">${esc(L_(v.ref))} <i>${lang==="ru"?"СП":v.tr||"NKJV"}</i></div><p>${L_(v.text).map(([n,x])=>`<b>${n}</b> <em>${esc(x)}</em>`).join(" ")}</p></div>`}
 function ico(s){return `<svg viewBox="0 0 24 24">${SI[s.hotel?"bed":SK[s.id]]}</svg>`}
 let trOn=S.get("tr","")==="1";
-const vrow=([a,b,c])=>`<div class="vr" data-v="${esc((a+" "+b).toLowerCase())}"><span>${esc(a)}</span><span>${esc(b)}${c?`<small>${esc(c)}</small>`:""}</span></div>`;
-function vocH(id){const w=GL[id];return trOn&&w?`<details class="voc"><summary>${esc(t("trVoc"))} · ${w.length}</summary>${w.map(vrow).join("")}</details>`:""}
-function trPanel(){const cur=pickDay();const days=DAYS.map((d,i)=>{const st=d.stops.filter(s=>GL[s.id]);return st.length?`<details class="vg"${i===cur?" open":""}><summary>${d.n} · ${esc(L_(d.dl))}</summary>${st.map(s=>`<div class="vs"><h4>${esc(s.name.ru)} / ${esc(s.name.en)}</h4>${GL[s.id].map(vrow).join("")}</div>`).join("")}</details>`:""}).join("");const gen=GLG.map(g=>`<details class="vg" data-g><summary>${esc(L_(g.t))}</summary><div class="vs">${g.w.map(vrow).join("")}</div></details>`).join("");
- const o=overlay(t("trT"),`<div class="gf ovb"><button class="chip tog${trOn?" on":""}" data-trs>${esc(t("trShow"))}</button><input type="search" id="trq" placeholder="${esc(t("trFind"))}" aria-label="${esc(t("trFind"))}"><div id="trl">${days}<h4 class="ih">${esc(t("trGen"))}</h4>${gen}</div></div>`);
- const inp=q("#trq",o);inp.addEventListener("input",()=>{const v=inp.value.trim().toLowerCase();o.querySelectorAll(".vr").forEach(r=>{r.hidden=!!v&&!r.dataset.v.includes(v)});o.querySelectorAll(".vs").forEach(g=>{g.hidden=![...g.querySelectorAll(".vr")].some(r=>!r.hidden)});o.querySelectorAll(".vg").forEach((g,i)=>{const any=[...g.querySelectorAll(".vr")].some(r=>!r.hidden);g.hidden=!any;if(v)g.open=true;else g.open=g.dataset.o==="1"});q("#trl .ih",o).hidden=![...o.querySelectorAll(".vg[data-g]")].some(g=>!g.hidden)});o.querySelectorAll(".vg").forEach(g=>{g.dataset.o=g.open?"1":""})}
+let hid=new Set();try{hid=new Set(JSON.parse(S.get("trh","[]")))}catch(e){}
+const saveHid=()=>S.set("trh",JSON.stringify([...hid])),vis=w=>w.filter(x=>!hid.has(x[1]));
+const SPK='<svg viewBox="0 0 24 24"><path d="M4 9.500v5h3.500L12 18.500v-13L7.500 9.500zM15 9a4 4 0 0 1 0 6M17.500 6.500a7.500 7.500 0 0 1 0 11"/></svg>';
+const say=x=>{try{const u=new SpeechSynthesisUtterance(x);u.lang="en-US";u.rate=.85;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}};
+const vrow=([a,b,c])=>hid.has(b)?"":`<div class="vr" data-v="${esc((a+" "+b).toLowerCase())}"><span>${esc(a)}</span><span><button class="vsay" data-say="${esc(b)}">${esc(b)}</button>${c?`<small>${esc(c)}</small>`:""}</span><button class="vx" data-vh="${esc(b)}" aria-label="${esc(t("vHide"))}">×</button></div>`;
+async function mt(x){const e=encodeURIComponent(x);try{const r=await fetch("https://api.mymemory.translated.net/get?langpair=ru|en&q="+e),j=await r.json(),v=j.responseData&&j.responseData.translatedText;if(r.ok&&v&&!/MYMEMORY WARNING/i.test(v))return v}catch(e0){}const r=await fetch("https://translate.googleapis.com/translate_a/single?client=gtx&sl=ru&tl=en&dt=t&q="+e),j=await r.json();return j[0].map(a=>a[0]).join("")}
+const IPAM=[["tʃ","ch"],["dʒ","j"],["eɪ","ay"],["aɪ","ie"],["aʊ","ow"],["ɔɪ","oy"],["oʊ","oh"],["əʊ","oh"],["iː","ee"],["uː","oo"],["ɑː","ah"],["ɔː","aw"],["ɜː","ur"],["ʃ","sh"],["ʒ","zh"],["θ","th"],["ð","th"],["ŋ","ng"],["j","y"],["ɪ","ih"],["ɛ","e"],["æ","a"],["ɑ","ah"],["ɒ","o"],["ɔ","aw"],["ʊ","uu"],["ʌ","uh"],["ə","uh"],["ɝ","ur"],["ɚ","er"],["ɹ","r"],["ɡ","g"],["ː",""],["ˌ",""],["/",""],["(",""],[")",""],[".",""]];
+const IPAR=new RegExp(IPAM.map(x=>x[0].replace(/[()./]/g,"\\$&")).join("|"),"g"),resp=i=>i.replace(IPAR,m=>IPAM.find(x=>x[0]===m)[1]);
+async function ipa(x){const w=(x.toLowerCase().match(/[a-z']+/g)||[]).slice(0,14);const l=await Promise.all(w.map(async k=>{try{const r=await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/"+encodeURIComponent(k));if(!r.ok)return[k,k];const j=await r.json(),p=j[0].phonetic||((j[0].phonetics||[]).find(a=>a.text)||{}).text;return p?[resp(p),p.replace(/\//g,"")]:[k,k]}catch(e){return[k,k]}}));return[l.map(a=>a[0]).join(" "),"/"+l.map(a=>a[1]).join(" ")+"/"]}
+function ttBind(o){const i=q("#tti",o),r=q("#ttr",o);let tm,seq=0;const show=(en,p)=>{r.hidden=false;r.innerHTML=`<div class="tten"><b>${esc(en)}</b>${"speechSynthesis"in window?`<button class="btn ic" data-say="${esc(en)}" aria-label="${esc(t("ttListen"))}">${SPK}</button>`:""}</div>${p?`<small>${esc(p)}</small>`:""}`};i.addEventListener("input",()=>{clearTimeout(tm);const x=i.value.trim();const my=++seq;if(!x){r.hidden=true;return}const low=x.toLowerCase(),hit=[...Object.values(GL).flat(),...GLG.flatMap(g=>g.w)].find(w=>w[0].split(" (")[0].toLowerCase()===low);if(hit){show(hit[1],hit[2]);return}tm=setTimeout(async()=>{if(!navigator.onLine){r.hidden=false;r.textContent=t("ttNet");return}try{const en=await mt(x);if(my!==seq)return;show(en,"");const p=await ipa(en);if(my===seq)show(en,p.join(" · "))}catch(e){if(my===seq){r.hidden=false;r.textContent=t("ttErr")}}},500)})}
+function vocH(id){const w=vis(GL[id]||[]);return trOn&&w.length?`<details class="voc"><summary>${esc(t("trVoc"))} · <i>${w.length}</i></summary>${w.map(vrow).join("")}</details>`:""}
+function trPanel(){const cur=pickDay();const days=DAYS.map((d,i)=>{const st=d.stops.filter(s=>GL[s.id]&&vis(GL[s.id]).length);return st.length?`<details class="vg"${i===cur?" open":""}><summary>${d.n} · ${esc(L_(d.dl))}</summary>${st.map(s=>`<div class="vs"><h4>${esc(s.name.ru)} / ${esc(s.name.en)}</h4>${GL[s.id].map(vrow).join("")}</div>`).join("")}</details>`:""}).join("");const gen=GLG.map(g=>`<details class="vg" data-g><summary>${esc(L_(g.t))}</summary><div class="vs">${g.w.map(vrow).join("")}</div></details>`).join("");
+ const o=overlay(t("trT"),`<div class="gf ovb"><label for="tti">${esc(t("ttT"))}</label><textarea id="tti" rows="2" placeholder="${esc(t("ttPh"))}"></textarea><div id="ttr" class="ttr" role="status" hidden></div><button class="chip tog${trOn?" on":""}" data-trs>${esc(t("trShow"))}</button><button class="chip tog" data-vr id="trh"${hid.size?"":" hidden"}>${esc(t("vShow"))} · <i>${hid.size}</i></button><input type="search" id="trq" placeholder="${esc(t("trFind"))}" aria-label="${esc(t("trFind"))}"><div id="trl">${days}<h4 class="ih">${esc(t("trGen"))}</h4>${gen}</div></div>`);
+ ttBind(o);const inp=q("#trq",o);inp.addEventListener("input",()=>{const v=inp.value.trim().toLowerCase();o.querySelectorAll(".vr").forEach(r=>{r.hidden=!!v&&!r.dataset.v.includes(v)});o.querySelectorAll(".vs").forEach(g=>{g.hidden=![...g.querySelectorAll(".vr")].some(r=>!r.hidden)});o.querySelectorAll(".vg").forEach((g,i)=>{const any=[...g.querySelectorAll(".vr")].some(r=>!r.hidden);g.hidden=!any;if(v)g.open=true;else g.open=g.dataset.o==="1"});q("#trl .ih",o).hidden=![...o.querySelectorAll(".vg[data-g]")].some(g=>!g.hidden)});o.querySelectorAll(".vg").forEach(g=>{g.dataset.o=g.open?"1":""})}
 function stopNo(d,s){let i=0;for(const x of d.stops){if(x.ll)i++;if(x===s)return i}return 0}
 const readH=r=>`<div class="rd"><div class="lab">${esc(t("readT"))}</div><b>${esc(L_(r.h))}</b>${r.l.map(x=>{const e=lang==="en";const v=RT[x[0]];return `<details class="rl"><summary><span>${esc(x[e?1:0])}</span> — ${esc(x[e?3:2])}</summary>${verseH({ref:{ru:x[0],en:x[1]},text:v,tr:"KJV"})}</details>`}).join("")}</div>`;
 function stopH(d,s){const n=stopNo(d,s);const st=UD.times[s.id]||s.time,tm=st?`<span class="tm">${esc(L_(st))}</span>`:"";
@@ -1353,6 +1657,9 @@ document.addEventListener("click",e=>{const b=e.target.closest("button,[data-ope
  else if("pcx"in D)closeCard();
  else if("glogin"in D){gOn?gPanel():gLogin()}
  else if("tr"in D)trPanel();
+ else if(D.say)say(D.say);
+ else if(D.vh){hid.add(D.vh);saveHid();const v=b.closest(".voc");document.querySelectorAll(".vr").forEach(r=>{const x=r.querySelector("[data-vh]");if(x&&x.dataset.vh===D.vh)r.remove()});if(v)q("summary i",v).textContent=v.querySelectorAll(".vr").length;const h=q("#trh");if(h){h.hidden=false;q("i",h).textContent=hid.size}}
+ else if("vr"in D){hid.clear();saveHid();q(".ov").remove();trPanel();if(trOn)applyUpd()}
  else if("trs"in D){trOn=!trOn;S.set("tr",trOn?"1":"");b.classList.toggle("on",trOn);renderDays()}
  else if("inst"in D){if(bip){bip.prompt();bip.userChoice.finally(()=>{bip=null;renderInfo()})}}
  else if("copy"in D){const ok=()=>{b.textContent=t("instDone")};(navigator.clipboard?navigator.clipboard.writeText(SITE).then(ok):Promise.reject()).catch(()=>{const r=document.createRange(),n=q(".ilink");r.selectNodeContents(n);const w=getSelection();w.removeAllRanges();w.addRange(r)})}
@@ -1363,7 +1670,7 @@ document.addEventListener("click",e=>{const b=e.target.closest("button,[data-ope
 document.addEventListener("change",e=>{const x=e.target;if(x.dataset.cb)S.set("cb"+x.dataset.cb,x.checked?"1":"")});
 document.addEventListener("input",e=>{const x=e.target;});
 q("#blang").onclick=()=>{lang=lang==="ru"?"en":"ru";S.set("lang",lang);if(mapObj){mapObj.remove();mapObj=null;mapReady=null;mkL=routeL=null;tiles={}}renderAll();if(tab==="map")go("map")};
-let lastDay=dayToday();document.addEventListener("visibilitychange",()=>{if(!document.hidden&&dayToday()!==lastDay){lastDay=dayToday();curDay=null;renderDays();renderHotels();renderInfo()}});
+let lastDay=dayToday(),hidAt=0;document.addEventListener("visibilitychange",()=>{if(document.hidden){hidAt=Date.now();return}const nd=dayToday()!==lastDay;if(nd||(Date.now()-hidAt>3e5&&!q(".ov"))){lastDay=dayToday();curDay=null;renderDays();renderHotels();renderInfo();go("days");q("#dayscroll").scrollTop=0}});
 function welcome(){if(S.get("hi",""))return;const o=document.createElement("div");o.className="wel";o.innerHTML=`<div class="welb"><svg class="wstar" viewBox="0 0 24 24"><path d="M12 2.500l8.200 14.200H3.800zM12 21.500L3.800 7.300h16.400z"/></svg><h2>Шалом!</h2><p>Рады, что вы с нами.<br>Благословенного путешествия!</p><p class="wen">We're glad you're with us.<br>Have a blessed journey!</p><button class="btn pri" data-wl="ru">Русский</button><button class="btn" data-wl="en">English</button></div>`;o.addEventListener("click",e=>{const b=e.target.closest("[data-wl]");if(!b)return;lang=b.dataset.wl;S.set("lang",lang);S.set("hi","1");o.remove();renderAll()});document.body.appendChild(o)}
 renderAll();welcome();go("days");loadWx();setInterval(()=>{loadUpd();applyUpd()},300000);loadUpd();
 addEventListener("online",()=>{loadWx();loadUpd();if(mapObj)renderMapCtl()});addEventListener("offline",()=>{if(!mapObj)return;if(tileMode==="hd")setTile("map");else renderMapCtl()});
