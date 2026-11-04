@@ -832,6 +832,7 @@ details.card>summary{font:600 18px var(--body);cursor:pointer;list-style-positio
 .rd{margin-top:8px;font-size:15.5px;line-height:1.35}.rd>b{display:block;margin-bottom:3px}.rl{padding-block:2px}.rl span{color:var(--acc);font-weight:600;font-variant-numeric:tabular-nums}
 .rl summary{cursor:pointer;padding-block:3px}.rl .verse{margin-top:4px;margin-bottom:6px}
 .tm.dep{display:block;margin-top:7px}.gdep label{padding-left:14px}
+.vr small{display:block;font-weight:400;font-size:13px;color:var(--mut)}
 </style>
 
 </head><body>
@@ -955,454 +956,247 @@ const INST={ios:{t:"iPhone / iPad",ru:["Откройте эту страницу
 
 const W=s=>s.trim().split("\n").map(l=>l.split("|").map(x=>x.trim()));
 const GL={
-tlv:W(`зал прилёта|arrivals hall
-паспортный контроль|passport control
-выдача багажа|baggage claim
-таможня|customs
-залог|deposit
-наличные|cash
-чаевые|tips
-посадка в автобус|boarding the bus`),
-jaffa:W(`Яффо|Jaffa
-Иоппия|Joppa
-Симон кожевник|Simon the tanner
-кожевник|tanner
-Тавифа (Серна)|Tabitha (Dorcas)
-апостол Пётр|the apostle Peter
-видение Петра|Peter's vision
-пророк Иона|the prophet Jonah
-Фарсис|Tarshish
-большая рыба|great fish
-кедры ливанские|cedars of Lebanon
-гавань|harbor
-Часовая башня|Clock Tower`),
-net:W(`Нетания|Netanya
-набережная|promenade
-Средиземное море|Mediterranean Sea
-Саронская долина|Plain of Sharon`),
-caes:W(`Кесария Приморская|Caesarea Maritima
-Ирод Великий|Herod the Great
-Корнилий|Cornelius
-сотник|centurion
-Итальянский полк|Italian Regiment
-язычник|Gentile
-крестить|to baptize
-крещение|baptism
-Филипп благовестник|Philip the evangelist
-Понтий Пилат|Pontius Pilate
-камень Пилата|Pilate Stone
-Феликс и Фест|Felix and Festus
-царь Агриппа|King Agrippa
-апостол Павел в заключении|the apostle Paul in custody
-«требую суда кесарева»|"I appeal to Caesar"
-ипподром|hippodrome
-театр|theater
-дворец на мысу|promontory palace
-волнорез|breakwater
-акведук|aqueduct
-искусственная гавань|man-made harbor
-крестоносцы|Crusaders`),
-muh:W(`Мухрака|Muhraka
-гора Кармил|Mount Carmel
-пророк Илия|the prophet Elijah
-жрецы Ваала|the prophets of Baal
-Ваал|Baal
-царь Ахав|King Ahab
-Иезавель|Jezebel
-жертвенник|altar
-всесожжение|burnt sacrifice
-ров|trench
-огонь Господень|the fire of the LORD
-«Господь есть Бог!»|"The LORD, He is God!"
-поток Киссон|the Brook Kishon
-засуха|drought
-небольшое облако|a small cloud
-кармелиты|Carmelites
-монастырь|monastery
-Изреельская долина|Jezreel Valley`),
-meg:W(`Мегиддо|Megiddo
-Армагеддон|Armageddon
-тель (холм-поселение)|tel (ancient mound)
-царь Соломон|King Solomon
-городские ворота|city gate
-конюшни|stables
-колодец|well
-водный тоннель|water tunnel
-зернохранилище|grain silo
-ханаанеи|Canaanites
-царь Иосия|King Josiah
-фараон Нехао|Pharaoh Necho
-Девора и Варак|Deborah and Barak
-Сисара|Sisera
-Морской путь|Via Maris
-гора Фавор|Mount Tabor
-гора Гелвуе|Mount Gilboa
-царь Саул|King Saul
-последняя битва|the final battle
-Добро и Зло|Good and Evil`),
-naz1:W(`Назарет|Nazareth
-Благовещение|the Annunciation
-гора низвержения|Mount of Precipice`),
-nv:W(`Назаретская деревня|Nazareth Village
-маслодавильня|olive press
-жёрнов|millstone
-винодельня (давильня)|winepress
-виноградник|vineyard
-терраса|terrace
-синагога|synagogue
-свиток Исаии|the scroll of Isaiah
-плотник|carpenter
-ткацкий станок|loom
-пастух|shepherd
-Иосиф и Мария|Joseph and Mary
-местная христианская община|the local Christian community
-притчи|parables`),
-cap:W(`Капернаум|Capernaum
-Галилейское море|Sea of Galilee
-Геннисаретское озеро|Lake of Gennesaret
-Тивериадское море|Sea of Tiberias
-Его город|His own city
-дом Петра|Peter's house
-тёща Петра|Peter's mother-in-law
-расслабленный|paralytic
-сотник|centurion
-Иаир|Jairus
-Матфей-мытарь|Matthew the tax collector
-рыбак|fisherman
-чудо|miracle
-Нагорная проповедь|Sermon on the Mount
-Хоразин и Вифсаида|Chorazin and Bethsaida
-базальт|basalt
-известняк|limestone
-восьмиугольная церковь|octagonal church`),
-mag:W(`Магдала|Magdala
-Мария Магдалина|Mary Magdalene
-семь бесов|seven demons
-пристань|pier
-рыбный рынок|fish market
-камень из Магдалы|the Magdala Stone
-менора|menorah
-синагога I века|first-century synagogue
-миква (ритуальная купальня)|mikveh (ritual bath)
-Тивериада|Tiberias
-служили Ему имением|provided for Him from their substance`),
-sde:W(`Сде-Бокер|Sde Boker
-пустыня Негев|Negev Desert
-киббуц|kibbutz
-Давид Бен-Гурион|David Ben-Gurion
-первый премьер-министр|first Prime Minister
-дом Бен-Гуриона|Ben-Gurion's Desert Home
-пустыня Цин|Wilderness of Zin
-Эйн-Авдат|Ein Avdat
-Кадес|Kadesh
-набатеи|Nabataeans
-Авдат|Avdat
-Дорога благовоний|Incense Route
-оазис|oasis
-заставить пустыню цвести|to make the desert bloom`),
-hike:W(`ущелье|gorge
-каньон|canyon
-тропа|trail
-вади (сухое русло)|wadi (dry riverbed)
-источник|spring
-горный козёл|Nubian ibex
-скала|cliff
-осторожно, скользко|careful, it's slippery`),
-hostel:W(`Шаббат (Суббота)|Sabbath (Shabbat)
-встреча Субботы|welcoming the Sabbath
-зажигание свечей|candle lighting
-кидуш|Kiddush
-хала|challah
-Мёртвое море|Dead Sea
-Эйн-Геди|En Gedi
-Содом и Гоморра|Sodom and Gomorrah
-ниже уровня моря|below sea level`),
-mas:W(`Масада|Masada
-крепость|fortress
-плато|plateau
-Иудейская пустыня|Judean Desert
-Великое еврейское восстание|Great Jewish Revolt
-завоевание Иудеи|conquest of Judea
-зелоты|Zealots
-сикарии|Sicarii
-Элеазар бен Яир|Eleazar ben Ya'ir
-Иосиф Флавий|Josephus
-Флавий Сильва|Flavius Silva
-Десятый легион|Tenth Legion
-осада|siege
-осадная насыпь|siege ramp
-римский лагерь|Roman camp
-Змеиная тропа|Snake Path
-фуникулёр|cable car
-Северный дворец|Northern Palace
-цистерны|cisterns
-штурм|assault
-символ непобедимости|symbol of invincibility
-«Масада больше не падёт»|"Masada shall not fall again"`),
-mol:W(`Масличная гора|Mount of Olives
-гора Елеонская|Mount of Olives (Olivet)
-Кедронская долина|Kidron Valley
-смотровая площадка|viewpoint
-Вознесение|the Ascension
-Второе пришествие|the Second Coming
-пророчество|prophecy
-Вифания|Bethany
-Лазарь|Lazarus
-Вербное воскресенье|Palm Sunday
-вход в Иерусалим|the Triumphal Entry
-«Осанна!»|"Hosanna!"
-Золотые ворота|Golden Gate
-еврейское кладбище|Jewish cemetery`),
-dom:W(`Доминус Флевит|Dominus Flevit
-«Господь заплакал»|"The Lord wept"
-францисканцы|Franciscans
-капелла|chapel
-в форме слезы|teardrop-shaped
-разрушение Иерусалима|the destruction of Jerusalem
-император Тит|Titus
-оссуарий|ossuary
-Антонио Барлуцци|Antonio Barluzzi`),
-get:W(`Гефсимания|Gethsemane
-Гефсиманский сад|Garden of Gethsemane
-моление о Чаше|the prayer over the Cup
-Чаша|the Cup
-Иуда Искариот|Judas Iscariot
-предательство|betrayal
-поцелуй Иуды|the kiss of Judas
-арест|arrest
-Малх|Malchus
-ученики|disciples
-бодрствуйте и молитесь|watch and pray
-пот как капли крови|sweat like great drops of blood
-масличные деревья|olive trees
-Церковь Всех Наций|Church of All Nations
-Базилика Агонии|Basilica of the Agony`),
-jer1:W(`Иерусалим|Jerusalem
-улица Яффо|Jaffa Street
-Центральный автовокзал|Central Bus Station`),
-tm:W(`Храмовая гора|Temple Mount
-гора Мориа|Mount Moriah
-Камень мироздания|the Foundation Stone
-Золотой Купол|the Golden Dome
-Купол Скалы|Dome of the Rock
-мечеть Аль-Акса|Al-Aqsa Mosque
-Шхина|Shekhinah
-Святая Святых|Holy of Holies
-Ковчег Завета|Ark of the Covenant
-Храм Соломона|Solomon's Temple
-Второй Храм|the Second Temple
-гумно Орны|threshing floor of Ornan
-жертвоприношение Исаака|the binding of Isaac
-притвор Соломонов|Solomon's Porch
-завеса|veil
-менялы|money changers
-Стена Плача|Western Wall
-мост Муграби|Mughrabi Bridge
-Вакф|the Waqf
-Творец и творение|Creator and creation`),
-foz:W(`Музей Друзей Сиона|Friends of Zion Museum
-христианские сионисты|Christian Zionists
-сионизм|Zionism
-Праведники народов мира|Righteous Among the Nations
-Декларация Бальфура|Balfour Declaration
-Корри тен Бом|Corrie ten Boom
-Оскар Шиндлер|Oskar Schindler
-Орд Вингейт|Orde Wingate`),
-her:W(`гора Герцля|Mount Herzl
-Теодор Герцль|Theodor Herzl
-основатель политического сионизма|founder of political Zionism
-мемориальное кладбище|memorial cemetery
-национальное кладбище|national cemetery
-военное кладбище|military cemetery
-Ицхак Рабин|Yitzhak Rabin
-Голда Меир|Golda Meir
-Шимон Перес|Shimon Peres`),
-cod:W(`Город Давида|City of David
-крепость Сион|the stronghold of Zion
-иевусеи|Jebusites
-Иевус|Jebus
-источник Гихон|Gihon Spring
-тоннель Езекии|Hezekiah's Tunnel
-царь Езекия|King Hezekiah
-шахта Уоррена|Warren's Shaft
-Силоамская надпись|Siloam Inscription
-раскопки|excavations
-Вирсавия|Bathsheba`),
-pil:W(`дорога паломников|Pilgrims' Road
-купальня Силоам|Pool of Siloam
-слепорождённый|the man born blind
-паломник|pilgrim
-ступени|steps
-Песни восхождения|Songs of Ascents
-Пасха|Passover
-Пятидесятница|Pentecost
-праздник Кущей|Feast of Tabernacles
-ритуальное омовение|ritual washing`),
-gt:W(`Голгофа|Golgotha (Calvary)
-Лобное место|Place of a Skull
-Могила в Саду|the Garden Tomb
-генерал Чарльз Гордон|General Charles Gordon
-Иосиф Аримафейский|Joseph of Arimathea
-распятие|crucifixion
-погребение|burial
-воскресение|resurrection
-новый гроб|new tomb
-камень у входа|stone at the entrance
-«Его нет здесь: Он воскрес»|"He is not here; for He is risen"
-Храм Гроба Господня|Church of the Holy Sepulchre
-Дамасские ворота|Damascus Gate
-винодельческий пресс|winepress
-цистерна|cistern`),
-yv:W(`Яд ва-Шем|Yad Vashem
-Катастрофа европейского еврейства|the Holocaust of European Jewry
-Шоа|the Shoah
-Зал памяти|Hall of Remembrance
-Зал имён|Hall of Names
-Мемориал детям|Children's Memorial
-Вечный огонь|Eternal Flame
-Праведники народов мира|Righteous Among the Nations
-Аллея Праведников|Avenue of the Righteous
-гетто|ghetto
-концлагерь|concentration camp
-лагерь смерти|death camp
-депортация|deportation
-шесть миллионов|six million`),
-oc:W(`Старый город|Old City
-Яффские ворота|Jaffa Gate
-Львиные ворота|Lions' Gate
-Навозные ворота|Dung Gate
-Сионские ворота|Zion Gate
-Башня Давида|Tower of David
-Скорбный путь|Via Dolorosa
-Еврейский квартал|Jewish Quarter
-Христианский квартал|Christian Quarter
-Мусульманский квартал|Muslim Quarter
-Армянский квартал|Armenian Quarter
-Кардо|the Cardo
-рынок|market (souk)
-торговаться|to bargain`)};
-const GLG=[{t:{ru:"Фразы гида",en:"Guide phrases"},w:W(`Встречаемся у автобуса|We meet at the bus
-Выезд через 10 минут|We leave in 10 minutes
-Наденьте наушники|Please put on your headsets
-Вы меня слышите?|Can you hear me?
-Держитесь вместе|Please stay together
-Не отставайте от группы|Please stay with the group
-У вас свободное время|You have free time
-Туалеты справа|The restrooms are on the right
-Перед вами|In front of you
-Слева от нас|To our left
-Справа от нас|To our right
-Обратите внимание на|Please notice
-Как написано в Писании|As it is written in Scripture
-Давайте прочитаем|Let's read
-Давайте помолимся|Let's pray`)},
-{t:{ru:"Библия и вера",en:"Bible and faith"},w:W(`Ветхий Завет|Old Testament
-Новый Завет|New Testament
-Евангелие|Gospel
-евангелисты|the Gospel writers (evangelists)
-Священное Писание|Holy Scripture
-Господь Иисус Христос|the Lord Jesus Christ
-Святой Дух|the Holy Spirit
-Мессия|Messiah
-Спаситель|Savior
-апостол|apostle
-пророк|prophet
-первосвященник|high priest
-книжники и фарисеи|scribes and Pharisees
-саддукеи|Sadducees
-мытарь|tax collector
-проповедь|sermon
-покаяние|repentance
-благодать|grace
-искупление|redemption
-завет|covenant
-избранный народ|chosen people
-Обетованная земля|the Promised Land
-Святая Земля|the Holy Land
-Сион|Zion`)},
-{t:{ru:"История",en:"History"},w:W(`до н. э.|BC
-н. э.|AD
-Иудея|Judea
-Самария|Samaria
-Галилея|Galilee
-Первый Храм|the First Temple
-Второй Храм|the Second Temple
-Вавилонский плен|the Babylonian exile
-Римская империя|Roman Empire
-император|emperor
-прокуратор|procurator
-легион|legion
-Византийский период|Byzantine period
-крестоносцы|Crusaders
-Османская империя|Ottoman Empire
-Британский мандат|British Mandate
-Государство Израиль|State of Israel
-Война за независимость|War of Independence
-Шестидневная война|Six-Day War
-археолог|archaeologist
-раскопки|excavations
-паломник|pilgrim
-Тора|Torah
-Танах|Tanakh
-раввин|rabbi
-кошерный|kosher`)},
-{t:{ru:"Книги Библии",en:"Books of the Bible"},w:W(`Бытие|Genesis
-Исход|Exodus
-Левит|Leviticus
-Числа|Numbers
-Второзаконие|Deuteronomy
-Иисус Навин|Joshua
-Судьи|Judges
-Руфь|Ruth
-1–2 Царств|1–2 Samuel
-3–4 Царств|1–2 Kings
-1–2 Паралипоменон|1–2 Chronicles
-Ездра|Ezra
-Неемия|Nehemiah
-Есфирь|Esther
-Иов|Job
-Псалтирь|Psalms
-Притчи|Proverbs
-Екклесиаст|Ecclesiastes
-Песнь Песней|Song of Solomon
-Исаия|Isaiah
-Иеремия|Jeremiah
-Иезекииль|Ezekiel
-Даниил|Daniel
-Осия|Hosea
-Иоиль|Joel
-Амос|Amos
-Авдий|Obadiah
-Иона|Jonah
-Михей|Micah
-Наум|Nahum
-Аввакум|Habakkuk
-Софония|Zephaniah
-Аггей|Haggai
-Захария|Zechariah
-Малахия|Malachi
-Матфей|Matthew
-Марк|Mark
-Лука|Luke
-Иоанн|John
-Деяния|Acts
-Римлянам|Romans
-1–2 Коринфянам|1–2 Corinthians
-Галатам|Galatians
-Ефесянам|Ephesians
-Филиппийцам|Philippians
-Колоссянам|Colossians
-1–2 Фессалоникийцам|1–2 Thessalonians
-1–2 Тимофею|1–2 Timothy
-Титу|Titus
-Филимону|Philemon
-Евреям|Hebrews
-Иакова|James
-1–2 Петра|1–2 Peter
-1–3 Иоанна|1–3 John
-Иуды|Jude
-Откровение|Revelation
-Псалмы: Синод. 10–145|usually +1 in English (Пс. 22 = Ps 23)`)}];
+jaffa:W(`Тавифа (Серна)|Tabitha (Dorcas)|TAB-ih-thuh, DOR-kus
+Фарсис|Tarshish|TAR-shish
+Иоппия|Joppa|JOP-uh
+кожевник|tanner|TAN-er
+ливанские кедры|cedars of Lebanon|SEE-derz, LEB-uh-nun
+Часовая башня|Clock Tower|KLOK TOW-er`),
+net:W(`Саронская долина|Plain of Sharon|SHAIR-un`),
+caes:W(`надпись «Тиберией» на камне Пилата|Tiberieum|tie-buh-REE-um
+камень Пилата|Pilate Stone|PIE-lut
+Себастос (гавань Ирода)|Sebastos (Herod's harbor)|seh-BAS-tos
+Кесария Приморская|Caesarea Maritima|sess-uh-REE-uh mar-ih-TEE-muh
+декуманус|decumanus|dek-yoo-MAY-nus
+кардо максимус|Cardo Maximus|KAR-doh MAK-sih-mus
+мысовой дворец|Promontory Palace|PROM-un-tor-ee
+высокий акведук|high-level aqueduct|AK-wuh-dukt
+ипподром|hippodrome|HIP-uh-drohm
+сотник|centurion|sen-TYOOR-ee-un
+Корнилий|Cornelius|kor-NEEL-yus
+Понтий Пилат|Pontius Pilate|PON-chus PIE-lut
+Фест|Festus|FES-tus
+царь Агриппа|King Agrippa|uh-GRIP-uh
+«требую суда кесарева»|"I appeal to Caesar"|uh-PEEL, SEE-zer`),
+muh:W(`Фесвитянин|the Tishbite|TISH-bite
+поток Киссон|the Brook Kishon|KIE-shon
+пророки дубравные|the prophets of Asherah|uh-SHEER-uh
+Мухрака|Muhraka|mookh-RAH-kah
+Авдий (управитель Ахава)|Obadiah|oh-buh-DIE-uh
+Галаад|Gilead|GIL-ee-ad
+кармелиты|Carmelites|KAR-muh-lites
+Изреельская долина|Jezreel Valley|JEZ-ree-el
+Иезавель|Jezebel|JEZ-uh-bel
+Ахав|Ahab|AY-hab
+Ваал|Baal|BAY-ul
+Илия|Elijah|ih-LIE-juh
+всесожжение|burnt sacrifice|SAK-rih-fice`),
+meg:W(`Телль эль-Мутеселлим|Tell el-Mutesellim|tel el moo-teh-SEL-im
+Тиглатпаласар III|Tiglath-Pileser III|TIG-lath pie-LEE-zer
+Салманасар III|Shalmaneser III|shal-muh-NEE-zer
+Тутмос III|Thutmose III|thoot-MOH-suh
+Сусаким (Шешонк)|Shishak|SHIE-shak
+Амарнские письма|the Amarna letters|uh-MAR-nuh
+Фанаах|Taanach|TAY-uh-nak
+шестикамерные ворота|six-chambered gate|CHAYM-berd
+Хар-Мегиддо (Армагеддон)|Har-Megiddo|har meh-GID-oh
+фараон Нехао|Pharaoh Necho|FAIR-oh NEE-koh
+Сисара|Sisera|SIS-er-uh
+Морской путь|Via Maris|VEE-uh MAR-iss
+ханаанеи|Canaanites|KAY-nuh-nites
+круглый жертвенник|Round Altar|AWL-ter
+гора Гелвуе|Mount Gilboa|gil-BOH-uh
+Варак|Barak|BAIR-uk
+царь Иосия|King Josiah|joh-SIGH-uh
+зернохранилище|grain silo|SIE-loh
+Мегиддо|Megiddo|meh-GID-oh`),
+nv:W(`свиток Исаии|the scroll of Isaiah|eye-ZAY-uh
+гумно|threshing floor|THRESH-ing
+каменоломня|stone quarry|KWOR-ee
+миква|mikveh|MIK-vuh
+сторожевая башня|watchtower|WOCH-tow-er
+ткацкий станок|loom|LOOM
+жёрнов|millstone|MIL-stohn
+террасы|terraces|TAIR-uh-siz`),
+cap:W(`Кфар-Нахум|Kfar Nahum|kfar nah-HOOM
+инсула|insula|IN-suh-luh
+Хоразин|Chorazin|koh-RAY-zin
+Иаир|Jairus|JY-rus
+Вифсаида|Bethsaida|beth-SAY-uh-duh
+Капернаум|Capernaum|kuh-PUR-nay-um
+Геннисаретское озеро|Lake of Gennesaret|geh-NESS-uh-ret
+Гора Блаженств|Mount of Beatitudes|bee-AT-ih-toodz
+расслабленный|paralytic|pair-uh-LIT-ik
+мытарь|tax collector|kuh-LEK-ter
+базальт|basalt|buh-SALT`),
+mag:W(`Тарихея|Taricheae|tuh-RIK-ee-ee
+Мигдаль-Нуная|Migdal Nunaya|mig-DAHL noo-NAH-yah
+Хуза|Chuza|KOO-zuh
+бейт-мидраш|beit midrash|bayt mid-RAHSH
+гора Арбель|Mount Arbel|ar-BEL
+Дук ин Альтум|Duc in Altum|dook in AHL-toom
+миквот (мн. ч.)|mikva'ot|mik-VOHT
+засолка рыбы|fish salting|SAWL-ting
+Магдала|Magdala|MAG-duh-luh
+менора|menorah|muh-NOR-uh
+служили Ему имением|provided for Him from their substance|SUB-stans`),
+sde:W(`Набатеи|Nabataeans|nab-uh-TEE-unz
+Эйн-Авдат|Ein Avdat|ayn av-DAHT
+Сде-Бокер|Sde Boker|sday BOH-ker
+Кадес|Kadesh|KAY-desh
+пустыня Цин|Wilderness of Zin|ZIN
+Дорога благовоний|Incense Route|IN-sens
+киббуц|kibbutz|kih-BOOTS
+Негев|Negev|NEH-gev
+Паула Бен-Гурион|Paula Ben-Gurion|ben GOOR-ee-un`),
+hike:W(`горный козёл|Nubian ibex|NOO-bee-un IE-beks
+вади (сухое русло)|wadi|WAH-dee`),
+hostel:W(`Авдала|Havdalah|hav-duh-LAH
+кидуш|Kiddush|KID-ush
+хала|challah|HAH-luh
+Эйн-Геди|En Gedi|en GED-ee
+Содом и Гоморра|Sodom and Gomorrah|SOD-um, guh-MOR-uh`),
+mas:W(`гипокауст|hypocaust|HIE-poh-kawst
+аподитерий (раздевальня)|apodyterium|ap-oh-dih-TEER-ee-um
+тепидарий (тёплая комната)|tepidarium|tep-ih-DAIR-ee-um
+кальдарий (горячая комната)|caldarium|kal-DAIR-ee-um
+фригидарий (холодная комната)|frigidarium|frij-ih-DAIR-ee-um
+циркумвалляция (осадная стена)|circumvallation|sur-kum-vuh-LAY-shun
+колумбарий (голубятня)|columbarium|kol-um-BAIR-ee-um
+опус сектиле (мозаика)|opus sectile|OH-pus SEK-tih-lay
+Десятый легион Фретенсис|Legio X Fretensis|LEE-jee-oh fruh-TEN-sis
+казематная стена|casemate wall|KAYS-mayt
+сикарии|Sicarii|sih-KAIR-ee-eye
+остраконы (жребии)|ostraca (the lots)|OS-truh-kuh
+гениза|genizah|geh-NEE-zuh
+Элеазар бен Яир|Eleazar ben Ya'ir|el-ee-AY-zer ben yah-EER
+Иосиф Флавий|Josephus|joh-SEE-fus
+Флавий Сильва|Flavius Silva|FLAY-vee-us SIL-vuh
+зелоты|Zealots|ZEL-uts
+осадная насыпь|siege ramp|SEEJ ramp
+Змеиная тропа|Snake Path|snayk path`),
+mol:W(`Виффагия|Bethphage|BETH-fuh-jee
+Елеон|Olivet|OL-ih-vet
+могила Авессалома|Tomb of Absalom|AB-suh-lum
+Кедронская долина|Kidron Valley|KID-run
+Вифания|Bethany|BETH-uh-nee
+«Осанна!»|"Hosanna!"|hoh-ZAN-uh
+Вознесение|the Ascension|uh-SEN-shun`),
+dom:W(`Доминус Флевит|Dominus Flevit|DOM-ih-nus FLAY-vit
+Антонио Барлуцци|Antonio Barluzzi|bar-LOOT-see
+оссуарий|ossuary|OSH-oo-air-ee
+францисканцы|Franciscans|fran-SIS-kunz`),
+get:W(`Гат-Шеманим (масличный пресс)|Gat Shemanim|gat sheh-mah-NEEM
+Малх|Malchus|MAL-kus
+Гефсимания|Gethsemane|geth-SEM-uh-nee
+Искариот|Iscariot|iss-KAIR-ee-ut
+Базилика Агонии|Basilica of the Agony|buh-SIL-ih-kuh, AG-uh-nee
+Кедрон|Kidron|KID-run
+пот как капли крови|sweat like great drops of blood|swet`),
+tm:W(`Эвен ха-Штия|Even ha-Shetiya|EH-ven hah-sheh-TEE-yah
+Тиропеон|Tyropoeon Valley|tie-ROH-pee-on
+Харам аш-Шариф|Haram al-Sharif|hah-RAHM ash-shah-REEF
+Шхина|Shekhinah|sheh-KIE-nuh
+Вакф|the Waqf|wahkf
+мост Муграби|Mughrabi Bridge|moo-GRAH-bee
+сорег (ограда Храма)|Soreg|SOH-reg
+гумно Орны|threshing floor of Ornan|OR-nan
+Аравна|Araunah|uh-RAW-nuh
+ворота Хульды|Huldah Gates|HUL-duh
+арка Робинсона|Robinson's Arch|ROB-in-sunz
+арка Вильсона|Wilson's Arch|WIL-sunz
+мечеть Аль-Марвани|Al-Marwani Mosque|al mar-WAH-nee
+крепость Антония|Antonia Fortress|an-TOH-nee-uh
+гора Мориа|Mount Moriah|moh-RIE-uh
+мечеть Аль-Акса|Al-Aqsa Mosque|al AHK-suh
+притвор Соломонов|Solomon's Porch|SOL-uh-munz
+завеса|veil|VAYL`),
+foz:W(`Уильям Хехлер|William Hechler|HEKH-ler
+Орд Вингейт|Orde Wingate|ord WING-gayt
+Декларация Бальфура|Balfour Declaration|BAL-fur
+Корри тен Бом|Corrie ten Boom|KOR-ee ten BOHM
+Праведники народов мира|Righteous Among the Nations|RIE-chus
+Оскар Шиндлер|Oskar Schindler|SHIND-ler`),
+her:W(`Зеэв Жаботинский|Ze'ev Jabotinsky|ZEH-ev zhab-oh-TIN-skee
+Ханна Сенеш|Hannah Szenes|SEN-esh
+Теодор Герцль|Theodor Herzl|HERT-sul
+Ицхак Рабин|Yitzhak Rabin|yits-HAHK rah-BEEN
+Шимон Перес|Shimon Peres|shee-MOHN PEH-res
+Голда Меир|Golda Meir|GOL-duh my-EER`),
+cod:W(`буллы (глиняные печати)|bullae|BUL-ee
+иевусеи|Jebusites|JEB-yoo-sites
+Иегухал (печать)|Jehucal|jeh-HOO-kal
+Эйлат Мазар|Eilat Mazar|ay-LAHT mah-ZAR
+Ступенчатая каменная конструкция|Stepped Stone Structure|stepped stohn STRUK-cher
+Большая каменная постройка|Large Stone Structure|larj stohn STRUK-cher
+Весенняя башня|Spring Tower|spring TOW-er
+Офел|Ophel|OH-fel
+Гихон|Gihon|GEE-hon
+шахта Уоррена|Warren's Shaft|WOR-enz
+Силоамская надпись|Siloam Inscription|sy-LOH-um in-SKRIP-shun
+царь Езекия|King Hezekiah|hez-uh-KIE-uh
+Вирсавия|Bathsheba|bath-SHEE-buh`),
+pil:W(`надпись Феодота|Theodotus Inscription|thee-OD-uh-tus
+Песни восхождения|Songs of Ascents|uh-SENTS
+ступенчатая улица|Stepped Street|STEPT street
+праздник Кущей|Feast of Tabernacles|TAB-er-nak-ulz
+Пятидесятница|Pentecost|PEN-tih-kost
+купальня Силоам|Pool of Siloam|sy-LOH-um`),
+gt:W(`Аримафея|Arimathea|air-ih-muh-THEE-uh
+гроб (в Евангелии)|the sepulchre|SEP-ul-ker
+Никодим|Nicodemus|nik-uh-DEE-mus
+Лобное место|Place of a Skull|skul
+цистерна|cistern|SIS-tern
+Голгофа|Golgotha|GOL-guh-thuh
+Кальвария|Calvary|KAL-vuh-ree
+Дамасские ворота|Damascus Gate|duh-MAS-kus`),
+yv:W(`айнзацгруппы|Einsatzgruppen|EYE-n-zahts-groo-pen
+Хрустальная ночь|Kristallnacht|kris-TAHL-nahkt
+Ванзейская конференция|Wannsee Conference|VAHN-zay
+Януш Корчак|Janusz Korczak|YAH-noosh KOR-chahk
+Освенцим|Auschwitz|OWSH-vits
+Шоа|the Shoah|SHOH-uh
+Моше Сафди|Moshe Safdie|moh-SHEH SAHF-dee
+Яд ва-Шем|Yad Vashem|yahd vah-SHEM
+призма (форма музея)|prism|PRIZ-um
+гетто|ghetto|GET-oh`),
+oc:W(`Сулейман Великолепный|Suleiman the Magnificent|soo-lay-MAHN
+синагога Хурва|Hurva Synagogue|HOOR-vuh
+Скорбный путь|Via Dolorosa|VEE-uh doh-loh-ROH-suh
+рынок|souk|SOOK
+Навозные ворота|Dung Gate|DUNG
+Кардо|the Cardo|KAR-doh`)};
+const GLG=[{t:{ru:"Библия и вера",en:"Bible and faith"},w:W(`книжники и фарисеи|scribes and Pharisees|FAIR-uh-seez
+саддукеи|Sadducees|SAD-yoo-seez
+первосвященник|high priest|hie preest
+искупление|redemption|rih-DEMP-shun
+покаяние|repentance|rih-PEN-tens
+благодать|grace|GRAYS
+завет|covenant|KUV-uh-nunt
+Мессия|Messiah|muh-SIE-uh`)},
+{t:{ru:"История",en:"History"},w:W(`Вавилонский плен|the Babylonian exile|bab-uh-LOH-nee-un EG-zile
+Хасмонеи|Hasmoneans|haz-muh-NEE-unz
+прокуратор|procurator|PROK-yoo-ray-ter
+Танах|Tanakh|tah-NAHKH
+Британский мандат|British Mandate|MAN-dayt
+Османская империя|Ottoman Empire|OT-uh-mun
+раввин|rabbi|RAB-eye
+кошерный|kosher|KOH-sher`)},
+{t:{ru:"Книги Библии: сложные названия",en:"Books of the Bible: difficult names"},w:W(`Екклесиаст|Ecclesiastes|ih-klee-zee-AS-teez
+1–2 Паралипоменон|1–2 Chronicles|KRON-ih-kulz
+Второзаконие|Deuteronomy|doo-ter-ON-uh-mee
+Аввакум|Habakkuk|huh-BAK-uk
+Аггей|Haggai|HAG-eye
+Софония|Zephaniah|zef-uh-NIE-uh
+Авдий|Obadiah|oh-buh-DIE-uh
+Осия|Hosea|hoh-ZAY-uh
+Малахия|Malachi|MAL-uh-kie
+Иезекииль|Ezekiel|ih-ZEE-kee-ul
+1–2 Фессалоникийцам|1–2 Thessalonians|thes-uh-LOH-nee-unz
+Филимону|Philemon|fie-LEE-mun
+3–4 Царств|1–2 Kings|kingz
+1–2 Царств|1–2 Samuel|SAM-yoo-ul
+Псалтирь: Синод. 10–145|Psalms: usually +1 (Пс. 22 = Ps 23)|sahmz`)}];
 
 const RT={"Деяния 10:1–8":{"ru":[[1,"В Кесарии был некоторый муж, именем Корнилий, сотник из полка, называемого Италийским,"],[2,"благочестивый и боящийся Бога со всем домом своим, творивший много милостыни народу и всегда молившийся Богу."],[3,"Он в видении ясно видел около девятого часа дня Ангела Божия, который вошел к нему и сказал ему: Корнилий!"],[4,"Он же, взглянув на него и испугавшись, сказал: что, Господи? Ангел отвечал ему: молитвы твои и милостыни твои пришли на память пред Богом."],[5,"Итак пошли людей в Иоппию и призови Симона, называемого Петром."],[6,"Он гостит у некоего Симона кожевника, которого дом находится при море; он скажет тебе слова, которыми спасешься ты и весь дом твой."],[7,"Когда Ангел, говоривший с Корнилием, отошел, то он, призвав двоих из своих слуг и благочестивого воина из находившихся при нем"],[8,"и, рассказав им все, послал их в Иоппию."]],"en":[[1,"There was a certain man in Cæsarea called Cornelius, a centurion of the band called the Italian band,"],[2,"A devout man, and one that feared God with all his house, which gave much alms to the people, and prayed to God alway."],[3,"He saw in a vision evidently about the ninth hour of the day an angel of God coming in to him, and saying unto him, Cornelius."],[4,"And when he looked on him, he was afraid, and said, What is it, Lord? And he said unto him, Thy prayers and thine alms are come up for a memorial before God."],[5,"And now send men to Joppa, and call for one Simon, whose surname is Peter:"],[6,"He lodgeth with one Simon a tanner, whose house is by the sea side: he shall tell thee what thou oughtest to do."],[7,"And when the angel which spake unto Cornelius was departed, he called two of his household servants, and a devout soldier of them that waited on him continually;"],[8,"And when he had declared all these things unto them, he sent them to Joppa."]]},"Деяния 10:9–20":{"ru":[[9,"На другой день, когда они шли и приближались к городу, Петр около шестого часа взошел на верх дома помолиться."],[10,"И почувствовал он голод, и хотел есть. Между тем, как приготовляли, он пришел в исступление"],[11,"и видит отверстое небо и сходящий к нему некоторый сосуд, как бы большое полотно, привязанное за четыре угла и опускаемое на землю;"],[12,"в нем находились всякие четвероногие земные, звери, пресмыкающиеся и птицы небесные."],[13,"И был глас к нему: встань, Петр, заколи и ешь."],[14,"Но Петр сказал: нет, Господи, я никогда не ел ничего скверного или нечистого."],[15,"Тогда в другой раз был глас к нему: что Бог очистил, того ты не почитай нечистым."],[16,"Это было трижды; и сосуд опять поднялся на небо."],[17,"Когда же Петр недоумевал в себе, что бы значило видение, которое он видел, — вот, мужи, посланные Корнилием, расспросив о доме Симона, остановились у ворот,"],[18,"и, крикнув, спросили: здесь ли Симон, называемый Петром?"],[19,"Между тем, как Петр размышлял о видении, Дух сказал ему: вот, три человека ищут тебя;"],[20,"встань, сойди и иди с ними, нимало не сомневаясь; ибо Я послал их."]],"en":[[9,"On the morrow, as they went on their journey, and drew nigh unto the city, Peter went up upon the housetop to pray about the sixth hour:"],[10,"And he became very hungry, and would have eaten: but while they made ready, he fell into a trance,"],[11,"And saw heaven opened, and a certain vessel descending unto him, as it had been a great sheet knit at the four corners, and let down to the earth:"],[12,"Wherein were all manner of fourfooted beasts of the earth, and wild beasts, and creeping things, and fowls of the air."],[13,"And there came a voice to him, Rise, Peter; kill, and eat."],[14,"But Peter said, Not so, Lord; for I have never eaten any thing that is common or unclean."],[15,"And the voice spake unto him again the second time, What God hath cleansed, that call not thou common."],[16,"This was done thrice: and the vessel was received up again into heaven."],[17,"Now while Peter doubted in himself what this vision which he had seen should mean, behold, the men which were sent from Cornelius had made enquiry for Simon’s house, and stood before the gate,"],[18,"And called, and asked whether Simon, which was surnamed Peter, were lodged there."],[19,"While Peter thought on the vision, the Spirit said unto him, Behold, three men seek thee."],[20,"Arise therefore, and get thee down, and go with them, doubting nothing: for I have sent them."]]},"Деяния 10:24–35":{"ru":[[24,"В следующий день пришли они в Кесарию. Корнилий же ожидал их, созвав родственников своих и близких друзей."],[25,"Когда Петр входил, Корнилий встретил его и поклонился, пав к ногам его."],[26,"Петр же поднял его, говоря: встань; я тоже человек."],[27,"И, беседуя с ним, вошел в дом, и нашел многих собравшихся."],[28,"И сказал им: вы знаете, что Иудею возбранено сообщаться или сближаться с иноплеменником; но мне Бог открыл, чтобы я не почитал ни одного человека скверным или нечистым."],[29,"Посему я, будучи позван, и пришел беспрекословно. Итак спрашиваю: для какого дела вы призвали меня?"],[30,"Корнилий сказал: четвертого дня я постился до теперешнего часа, и в девятом часу молился в своем доме, и вот, стал предо мною муж в светлой одежде,"],[31,"и говорит: Корнилий! услышана молитва твоя, и милостыни твои воспомянулись пред Богом."],[32,"Итак пошли в Иоппию и призови Симона, называемого Петром; он гостит в доме кожевника Симона при море; он придет и скажет тебе."],[33,"Тотчас послал я к тебе, и ты хорошо сделал, что пришел. Теперь все мы предстоим пред Богом, чтобы выслушать все, что повелено тебе от Бога."],[34,"Петр отверз уста и сказал: истинно познаю, что Бог нелицеприятен,"],[35,"но во всяком народе боящийся Его и поступающий по правде приятен Ему."]],"en":[[24,"And the morrow after they entered into Cæsarea. And Cornelius waited for them, and had called together his kinsmen and near friends."],[25,"And as Peter was coming in, Cornelius met him, and fell down at his feet, and worshipped him."],[26,"But Peter took him up, saying, Stand up; I myself also am a man."],[27,"And as he talked with him, he went in, and found many that were come together."],[28,"And he said unto them, Ye know how that it is an unlawful thing for a man that is a Jew to keep company, or come unto one of another nation; but God hath shewed me that I should not call any man common or unclean."],[29,"Therefore came I unto you without gainsaying, as soon as I was sent for: I ask therefore for what intent ye have sent for me?"],[30,"And Cornelius said, Four days ago I was fasting until this hour; and at the ninth hour I prayed in my house, and, behold, a man stood before me in bright clothing,"],[31,"And said, Cornelius, thy prayer is heard, and thine alms are had in remembrance in the sight of God."],[32,"Send therefore to Joppa, and call hither Simon, whose surname is Peter; he is lodged in the house of one Simon a tanner by the sea side: who, when he cometh, shall speak unto thee."],[33,"Immediately therefore I sent to thee; and thou hast well done that thou art come. Now therefore are we all here present before God, to hear all things that are commanded thee of God."],[34,"Then Peter opened his mouth, and said, Of a truth I perceive that God is no respecter of persons:"],[35,"But in every nation he that feareth him, and worketh righteousness, is accepted with him."]]},"Деяния 10:44–48":{"ru":[[44,"Когда Петр еще продолжал эту речь, Дух Святый сошел на всех, слушавших слово."],[45,"И верующие из обрезанных, пришедшие с Петром, изумились, что дар Святаго Духа излился и на язычников,"],[46,"ибо слышали их говорящих языками и величающих Бога. Тогда Петр сказал:"],[47,"кто может запретить креститься водою тем, которые, как и мы, получили Святаго Духа?"],[48,"И велел им креститься во имя Иисуса Христа. Потом они просили его пробыть у них несколько дней."]],"en":[[44,"While Peter yet spake these words, the Holy Ghost fell on all them which heard the word."],[45,"And they of the circumcision which believed were astonished, as many as came with Peter, because that on the Gentiles also was poured out the gift of the Holy Ghost."],[46,"For they heard them speak with tongues, and magnify God. Then answered Peter,"],[47,"Can any man forbid water, that these should not be baptized, which have received the Holy Ghost as well as we?"],[48,"And he commanded them to be baptized in the name of the Lord. Then prayed they him to tarry certain days."]]},"3 Царств 16:29–33":{"ru":[[29,"Ахав, сын Амвриев, воцарился над Израилем в тридцать восьмой год Асы, царя Иудейского, и царствовал Ахав, сын Амврия, над Израилем в Самарии двадцать два года."],[30,"И делал Ахав, сын Амврия, неугодное пред очами Господа более всех бывших прежде него."],[31,"Мало было для него впадать в грехи Иеровоама, сына Наватова; он взял себе в жену Иезавель, дочь Ефваала царя Сидонского, и стал служить Ваалу и поклоняться ему."],[32,"И поставил он Ваалу жертвенник в капище Ваала, который построил в Самарии."],[33,"И сделал Ахав дубраву, и более всех царей Израильских, которые были прежде него, Ахав делал то, что раздражает Господа Бога Израилева, [и погубил душу свою]."]],"en":[[29,"And in the thirty and eighth year of Asa king of Judah began Ahab the son of Omri to reign over Israel: and Ahab the son of Omri reigned over Israel in Samaria twenty and two years."],[30,"And Ahab the son of Omri did evil in the sight of the LORD above all that were before him."],[31,"And it came to pass, as if it had been a light thing for him to walk in the sins of Jeroboam the son of Nebat, that he took to wife Jezebel the daughter of Ethbaal king of the Zidonians, and went and served Baal, and worshipped him."],[32,"And he reared up an altar for Baal in the house of Baal, which he had built in Samaria."],[33,"And Ahab made a grove; and Ahab did more to provoke the LORD God of Israel to anger than all the kings of Israel that were before him."]]},"3 Царств 17:1":{"ru":[[1,"И сказал Илия [пророк], Фесвитянин, из жителей Галаадских, Ахаву: жив Господь Бог Израилев, пред Которым я стою! в сии годы не будет ни росы, ни дождя, разве только по моему слову."]],"en":[[1,"And Elijah the Tishbite, who was of the inhabitants of Gilead, said unto Ahab, As the LORD God of Israel liveth, before whom I stand, there shall not be dew nor rain these years, but according to my word."]]},"3 Царств 18:17–24":{"ru":[[17,"Когда Ахав увидел Илию, то сказал Ахав ему: ты ли это, смущающий Израиля?"],[18,"И сказал Илия: не я смущаю Израиля, а ты и дом отца твоего, тем, что вы презрели повеления Господни и идете вслед Ваалам;"],[19,"теперь пошли и собери ко мне всего Израиля на гору Кармил, и четыреста пятьдесят пророков Вааловых, и четыреста пророков дубравных, питающихся от стола Иезавели."],[20,"И послал Ахав ко всем сынам Израилевым и собрал всех пророков на гору Кармил."],[21,"И подошел Илия ко всему народу и сказал: долго ли вам хромать на оба колена? если Господь есть Бог, то последуйте Ему; а если Ваал, то ему последуйте. И не отвечал народ ему ни слова."],[22,"И сказал Илия народу: я один остался пророк Господень, а пророков Вааловых четыреста пятьдесят человек [и четыреста пророков дубравных];"],[23,"пусть дадут нам двух тельцов, и пусть они выберут себе одного тельца, и рассекут его, и положат на дрова, но огня пусть не подкладывают; а я приготовлю другого тельца и положу на дрова, а огня не подложу;"],[24,"и призовите вы имя бога вашего, а я призову имя Господа Бога моего. Тот Бог, Который даст ответ посредством огня, есть Бог. И отвечал весь народ и сказал: хорошо, [пусть будет так]."]],"en":[[17,"And it came to pass, when Ahab saw Elijah, that Ahab said unto him, Art thou he that troubleth Israel?"],[18,"And he answered, I have not troubled Israel; but thou, and thy father’s house, in that ye have forsaken the commandments of the LORD, and thou hast followed Baalim."],[19,"Now therefore send, and gather to me all Israel unto mount Carmel, and the prophets of Baal four hundred and fifty, and the prophets of the groves four hundred, which eat at Jezebel’s table."],[20,"So Ahab sent unto all the children of Israel, and gathered the prophets together unto mount Carmel."],[21,"And Elijah came unto all the people, and said, How long halt ye between two opinions? if the LORD be God, follow him: but if Baal, then follow him. And the people answered him not a word."],[22,"Then said Elijah unto the people, I, even I only, remain a prophet of the LORD; but Baal’s prophets are four hundred and fifty men."],[23,"Let them therefore give us two bullocks; and let them choose one bullock for themselves, and cut it in pieces, and lay it on wood, and put no fire under: and I will dress the other bullock, and lay it on wood, and put no fire under:"],[24,"And call ye on the name of your gods, and I will call on the name of the LORD: and the God that answereth by fire, let him be God. And all the people answered and said, It is well spoken."]]},"3 Царств 18:25–39":{"ru":[[25,"И сказал Илия пророкам Вааловым: выберите себе одного тельца и приготовьте вы прежде, ибо вас много; и призовите имя бога вашего, но огня не подкладывайте."],[26,"И взяли они тельца, который дан был им, и приготовили, и призывали имя Ваала от утра до полудня, говоря: Ваале, услышь нас! Но не было ни голоса, ни ответа. И скакали они у жертвенника, который сделали."],[27,"В полдень Илия стал смеяться над ними и говорил: кричите громким голосом, ибо он бог; может быть, он задумался, или занят чем-либо, или в дороге, а может быть, и спит, так он проснется!"],[28,"И стали они кричать громким голосом, и кололи себя по своему обыкновению ножами и копьями, так что кровь лилась по ним."],[29,"Прошел полдень, а они всё еще бесновались до самого времени вечернего жертвоприношения; но не было ни голоса, ни ответа, ни слуха. [И сказал Илия Фесвитянин пророкам Вааловым: теперь отойдите, чтоб и я совершил мое жертвоприношение. Они отошли и умолкли.]"],[30,"Тогда Илия сказал всему народу: подойдите ко мне. И подошел весь народ к нему. Он восстановил разрушенный жертвенник Господень."],[31,"И взял Илия двенадцать камней, по числу колен сынов Иакова, которому Господь сказал так: Израиль будет имя твое."],[32,"И построил из сих камней жертвенник во имя Господа, и сделал вокруг жертвенника ров, вместимостью в две саты зерен,"],[33,"и положил дрова [на жертвенник], и рассек тельца, и возложил его на дрова,"],[34,"и сказал: наполните четыре ведра воды и выливайте на всесожигаемую жертву и на дрова. [И сделали так.] Потом сказал: повторите. И они повторили. И сказал: сделайте то же в третий раз. И сделали в третий раз,"],[35,"и вода полилась вокруг жертвенника, и ров наполнился водою."],[36,"Во время приношения вечерней жертвы подошел Илия пророк [и воззвал на небо] и сказал: Господи, Боже Авраамов, Исааков и Израилев! [Услышь меня, Господи, услышь меня ныне в огне!] Да познают в сей день [люди сии], что Ты один Бог в Израиле, и что я раб Твой и сделал всё по слову Твоему."],[37,"Услышь меня, Господи, услышь меня! Да познает народ сей, что Ты, Господи, Бог, и Ты обратишь сердце их [к Тебе]."],[38,"И ниспал огонь Господень и пожрал всесожжение, и дрова, и камни, и прах, и поглотил воду, которая во рве."],[39,"Увидев это, весь народ пал на лице свое и сказал: Господь есть Бог, Господь есть Бог!"]],"en":[[25,"And Elijah said unto the prophets of Baal, Choose you one bullock for yourselves, and dress it first; for ye are many; and call on the name of your gods, but put no fire under."],[26,"And they took the bullock which was given them, and they dressed it, and called on the name of Baal from morning even until noon, saying, O Baal, hear us. But there was no voice, nor any that answered. And they leaped upon the altar which was made."],[27,"And it came to pass at noon, that Elijah mocked them, and said, Cry aloud: for he is a god; either he is talking, or he is pursuing, or he is in a journey, or peradventure he sleepeth, and must be awaked."],[28,"And they cried aloud, and cut themselves after their manner with knives and lancets, till the blood gushed out upon them."],[29,"And it came to pass, when midday was past, and they prophesied until the time of the offering of the evening sacrifice, that there was neither voice, nor any to answer, nor any that regarded."],[30,"And Elijah said unto all the people, Come near unto me. And all the people came near unto him. And he repaired the altar of the LORD that was broken down."],[31,"And Elijah took twelve stones, according to the number of the tribes of the sons of Jacob, unto whom the word of the LORD came, saying, Israel shall be thy name:"],[32,"And with the stones he built an altar in the name of the LORD: and he made a trench about the altar, as great as would contain two measures of seed."],[33,"And he put the wood in order, and cut the bullock in pieces, and laid him on the wood, and said, Fill four barrels with water, and pour it on the burnt sacrifice, and on the wood."],[34,"And he said, Do it the second time. And they did it the second time. And he said, Do it the third time. And they did it the third time."],[35,"And the water ran round about the altar; and he filled the trench also with water."],[36,"And it came to pass at the time of the offering of the evening sacrifice, that Elijah the prophet came near, and said, LORD God of Abraham, Isaac, and of Israel, let it be known this day that thou art God in Israel, and that I am thy servant, and that I have done all these things at thy word."],[37,"Hear me, O LORD, hear me, that this people may know that thou art the LORD God, and that thou hast turned their heart back again."],[38,"Then the fire of the LORD fell, and consumed the burnt sacrifice, and the wood, and the stones, and the dust, and licked up the water that was in the trench."],[39,"And when all the people saw it, they fell on their faces: and they said, The LORD, he is the God; the LORD, he is the God."]]},"3 Царств 18:41–45":{"ru":[[41,"И сказал Илия Ахаву: пойди, ешь и пей, ибо слышен шум дождя."],[42,"И пошел Ахав есть и пить, а Илия взошел на верх Кармила и наклонился к земле, и положил лице свое между коленами своими,"],[43,"и сказал отроку своему: пойди, посмотри к морю. Тот пошел и посмотрел, и сказал: ничего нет. Он сказал: продолжай это до семи раз."],[44,"В седьмой раз тот сказал: вот, небольшое облако поднимается от моря, величиною в ладонь человеческую. Он сказал: пойди, скажи Ахаву: \"запрягай [колесницу твою] и поезжай, чтобы не застал тебя дождь\"."],[45,"Между тем небо сделалось мрачно от туч и от ветра, и пошел большой дождь. Ахав же сел в колесницу, [заплакал] и поехал в Изреель."]],"en":[[41,"And Elijah said unto Ahab, Get thee up, eat and drink; for there is a sound of abundance of rain."],[42,"So Ahab went up to eat and to drink. And Elijah went up to the top of Carmel; and he cast himself down upon the earth, and put his face between his knees,"],[43,"And said to his servant, Go up now, look toward the sea. And he went up, and looked, and said, There is nothing. And he said, Go again seven times."],[44,"And it came to pass at the seventh time, that he said, Behold, there ariseth a little cloud out of the sea, like a man’s hand. And he said, Go up, say unto Ahab, Prepare thy chariot, and get thee down, that the rain stop thee not."],[45,"And it came to pass in the mean while, that the heaven was black with clouds and wind, and there was a great rain. And Ahab rode, and went to Jezreel."]]},"Судей 5:19–21":{"ru":[[19,"Пришли цари, сразились, тогда сразились цари Ханаанские в Фанаахе у вод Мегиддонских, но не получили нимало серебра."],[20,"С неба сражались, звезды с путей своих сражались с Сисарою."],[21,"Поток Киссон увлек их, поток Кедумим, поток Киссон. Попирай, душа моя, силу!"]],"en":[[19,"The kings came and fought, then fought the kings of Canaan in Taanach by the waters of Megiddo; they took no gain of money."],[20,"They fought from heaven; the stars in their courses fought against Sisera."],[21,"The river of Kishon swept them away, that ancient river, the river Kishon. O my soul, thou hast trodden down strength."]]},"4 Царств 23:28–30":{"ru":[[28,"Прочее об Иосии и обо всем, что он сделал, написано в летописи царей Иудейских."],[29,"Во дни его пошел фараон Нехао, царь Египетский, против царя Ассирийского на реку Евфрат. И вышел царь Иосия навстречу ему, и тот умертвил его в Мегиддоне, когда увидел его."],[30,"И рабы его повезли его мертвого из Мегиддона, и привезли его в Иерусалим, и похоронили его в гробнице его. И взял народ земли Иоахаза, сына Иосиина, и помазали его и воцарили его вместо отца его."]],"en":[[28,"Now the rest of the acts of Josiah, and all that he did, are they not written in the book of the chronicles of the kings of Judah?"],[29,"In his days Pharaoh-nechoh king of Egypt went up against the king of Assyria to the river Euphrates: and king Josiah went against him; and he slew him at Megiddo, when he had seen him."],[30,"And his servants carried him in a chariot dead from Megiddo, and brought him to Jerusalem, and buried him in his own sepulchre. And the people of the land took Jehoahaz the son of Josiah, and anointed him, and made him king in his father’s stead."]]},"Откровение 16:12–16":{"ru":[[12,"Шестой Ангел вылил чашу свою в великую реку Евфрат: и высохла в ней вода, чтобы готов был путь царям от восхода солнечного."],[13,"И видел я выходящих из уст дракона и из уст зверя и из уст лжепророка трех духов нечистых, подобных жабам:"],[14,"это — бесовские духи, творящие знамения; они выходят к царям земли всей вселенной, чтобы собрать их на брань в оный великий день Бога Вседержителя."],[15,"Се, иду как тать: блажен бодрствующий и хранящий одежду свою, чтобы не ходить ему нагим и чтобы не увидели срамоты его."],[16,"И он собрал их на место, называемое по-еврейски Армагеддон."]],"en":[[12,"And the sixth angel poured out his vial upon the great river Euphrates; and the water thereof was dried up, that the way of the kings of the east might be prepared."],[13,"And I saw three unclean spirits like frogs come out of the mouth of the dragon, and out of the mouth of the beast, and out of the mouth of the false prophet."],[14,"For they are the spirits of devils, working miracles, which go forth unto the kings of the earth and of the whole world, to gather them to the battle of that great day of God Almighty."],[15,"Behold, I come as a thief. Blessed is he that watcheth, and keepeth his garments, lest he walk naked, and they see his shame."],[16,"And he gathered them together into a place called in the Hebrew tongue Armageddon."]]},"Откровение 19:11–16":{"ru":[[11,"И увидел я отверстое небо, и вот конь белый, и сидящий на нем называется Верный и Истинный, Который праведно судит и воинствует."],[12,"Очи у Него как пламень огненный, и на голове Его много диадим. Он имел имя написанное, которого никто не знал, кроме Его Самого."],[13,"Он был облечен в одежду, обагренную кровью. Имя Ему: \"Слово Божие\"."],[14,"И воинства небесные следовали за Ним на конях белых, облеченные в виссон белый и чистый."],[15,"Из уст же Его исходит острый меч, чтобы им поражать народы. Он пасет их жезлом железным; Он топчет точило вина ярости и гнева Бога Вседержителя."],[16,"На одежде и на бедре Его написано имя: \"Царь царей и Господь господствующих\"."]],"en":[[11,"And I saw heaven opened, and behold a white horse; and he that sat upon him was called Faithful and True, and in righteousness he doth judge and make war."],[12,"His eyes were as a flame of fire, and on his head were many crowns; and he had a name written, that no man knew, but he himself."],[13,"And he was clothed with a vesture dipped in blood: and his name is called The Word of God."],[14,"And the armies which were in heaven followed him upon white horses, clothed in fine linen, white and clean."],[15,"And out of his mouth goeth a sharp sword, that with it he should smite the nations: and he shall rule them with a rod of iron: and he treadeth the winepress of the fierceness and wrath of Almighty God."],[16,"And he hath on his vesture and on his thigh a name written, KING OF KINGS, AND LORD OF LORDS."]]}};
 
@@ -1423,7 +1217,7 @@ function go(k){tab=k;if(k==="hotels"||k==="info"){renderHotels();renderInfo()}do
 function verseH(v){return `<div class="verse"><div class="r">${esc(L_(v.ref))} <i>${lang==="ru"?"СП":v.tr||"NKJV"}</i></div><p>${L_(v.text).map(([n,x])=>`<b>${n}</b> <em>${esc(x)}</em>`).join(" ")}</p></div>`}
 function ico(s){return `<svg viewBox="0 0 24 24">${SI[s.hotel?"bed":SK[s.id]]}</svg>`}
 let trOn=S.get("tr","")==="1";
-const vrow=([a,b])=>`<div class="vr" data-v="${esc((a+" "+b).toLowerCase())}"><span>${esc(a)}</span><span>${esc(b)}</span></div>`;
+const vrow=([a,b,c])=>`<div class="vr" data-v="${esc((a+" "+b).toLowerCase())}"><span>${esc(a)}</span><span>${esc(b)}${c?`<small>${esc(c)}</small>`:""}</span></div>`;
 function vocH(id){const w=GL[id];return trOn&&w?`<details class="voc"><summary>${esc(t("trVoc"))} · ${w.length}</summary>${w.map(vrow).join("")}</details>`:""}
 function trPanel(){const cur=pickDay();const days=DAYS.map((d,i)=>{const st=d.stops.filter(s=>GL[s.id]);return st.length?`<details class="vg"${i===cur?" open":""}><summary>${d.n} · ${esc(L_(d.dl))}</summary>${st.map(s=>`<div class="vs"><h4>${esc(s.name.ru)} / ${esc(s.name.en)}</h4>${GL[s.id].map(vrow).join("")}</div>`).join("")}</details>`:""}).join("");const gen=GLG.map(g=>`<details class="vg" data-g><summary>${esc(L_(g.t))}</summary><div class="vs">${g.w.map(vrow).join("")}</div></details>`).join("");
  const o=overlay(t("trT"),`<div class="gf ovb"><button class="chip tog${trOn?" on":""}" data-trs>${esc(t("trShow"))}</button><input type="search" id="trq" placeholder="${esc(t("trFind"))}" aria-label="${esc(t("trFind"))}"><div id="trl">${days}<h4 class="ih">${esc(t("trGen"))}</h4>${gen}</div></div>`);
